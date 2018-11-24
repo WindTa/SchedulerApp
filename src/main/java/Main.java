@@ -11,6 +11,7 @@ import java.sql.Connection;
 public class Main extends Application {
 
     public static Connection con;
+    public static Stage window;
 
     public static void main(String[] args) {
         con = ConnectionManager.getConnection();
@@ -19,12 +20,24 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        window = stage;
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignUp.fxml"));
 
         Scene scene = new Scene(root, 1280, 720);
 
-        stage.setTitle("J&K Scheduler");
-        stage.setScene(scene);
-        stage.show();
+        window.setTitle("J&K Scheduler");
+
+        window.setOnCloseRequest(e -> {
+            e.consume();
+            closeProgram();
+        });
+
+        window.setScene(scene);
+        window.show();
+    }
+
+    public static void closeProgram() {
+        System.out.println("Closing program...");
+        window.close();
     }
 }

@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.java.Main;
 
 import java.io.IOException;
 
@@ -16,10 +17,8 @@ public class SignInController {
 
         Scene scene = new Scene(root, 1280, 720);
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-        window.setScene(scene);
-        window.show();
+        Main.window.setScene(scene);
+        Main.window.show();
     }
 
     public void signInClick(ActionEvent event) throws IOException {
@@ -28,9 +27,8 @@ public class SignInController {
 
         Scene scene = new Scene(root, 1280, 720);
 
-        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-        window.setScene(scene);
-        window.show();
+        Main.window.setScene(scene);
+        Main.window.show();
     }
 }
