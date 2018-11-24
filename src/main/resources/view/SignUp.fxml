@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="main.java.controllers.SignUpController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="197.0" spacing="20.0">
+         <children>
+            <TextField promptText="Email" />
+            <PasswordField promptText="Password" />
+            <HBox spacing="10.0">
+               <children>
+                  <TextField promptText="First Name" />
+                  <TextField promptText="Last Name" />
+               </children>
+            </HBox>
+            <DatePicker prefHeight="25.0" prefWidth="206.0" promptText="Birth Date" />
+            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpClick" prefHeight="25.0" prefWidth="237.0" text="Create Account" />
+            <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInClick" prefHeight="25.0" prefWidth="207.0" text="Already have an account?" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </VBox>
+   </children>
+</HBox>

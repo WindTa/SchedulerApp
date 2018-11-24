@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.HomeController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Import..." />
+                  <MenuItem mnemonicParsing="false" text="Export..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Account">
+              <items>
+                  <MenuItem mnemonicParsing="false" text="Edit Info..." />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Appointment">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Make Appointment..." />
+                  <MenuItem mnemonicParsing="false" text="Cancel Appointment..." />
+                  <MenuItem mnemonicParsing="false" text="Edit Appointment..." />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Settings">
+               <items>
+                  <Menu mnemonicParsing="false" text="Mode">
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" selected="true" text="Month">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="calendarMode" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" text="Week" toggleGroup="$calendarMode" />
+                        <RadioMenuItem mnemonicParsing="false" text="Day" toggleGroup="$calendarMode" />
+                     </items>
+                  </Menu>
+                  <MenuItem mnemonicParsing="false" text="Change Color..." />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
