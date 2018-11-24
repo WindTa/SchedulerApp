@@ -15,9 +15,7 @@ public class SignInController {
 
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignUp.fxml"));
 
-        Scene scene = new Scene(root, 1280, 720);
-
-        Main.window.setScene(scene);
+        Main.window.getScene().setRoot(root);
         Main.window.show();
     }
 
@@ -25,10 +23,7 @@ public class SignInController {
 
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
 
-        Scene scene = new Scene(root, 1280, 720);
-
-
-        Main.window.setScene(scene);
+        Main.window.getScene().setRoot(root);
         Main.window.show();
     }
 }
