@@ -6,9 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.sql.Connection;
+
 public class Main extends Application {
 
+    public static Connection con;
+
     public static void main(String[] args) {
+        con = ConnectionManager.getConnection();
         launch(args);
     }
 
