@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.EditInfoController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.EditColorController">
    <children>
       <HBox prefHeight="24.0" prefWidth="560.0">
          <children>
@@ -30,13 +30,13 @@
                   <ToggleGroup fx:id="state" />
                </toggleGroup>
             </RadioButton>
-            <Button fx:id="editButton1" mnemonicParsing="false" onAction="#editClick1" prefHeight="25.0" prefWidth="125.0" text="Edit" textFill="BLUE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Button fx:id="editButton" mnemonicParsing="false" onAction="#editClick" prefHeight="25.0" prefWidth="125.0" text="Edit" textFill="BLUE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <RadioButton fx:id="afterButton" mnemonicParsing="false" onAction="#afterClick" text="After" toggleGroup="$state" GridPane.rowIndex="1" />
             <Label text="Calendar" GridPane.columnIndex="1" />
             <Label text="Appointment" GridPane.columnIndex="2" />
-            <ColorPicker fx:id="calendarColor" disable="true" onAction="#calendarClick" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ColorPicker fx:id="appointmentColor" disable="true" onAction="#appointmentClick" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button fx:id="applyButton1" disable="true" mnemonicParsing="false" onAction="#applyClick1" prefHeight="25.0" prefWidth="125.0" text="Apply" GridPane.columnIndex="3" />
+            <ColorPicker fx:id="calendarColor" disable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ColorPicker fx:id="appointmentColor" disable="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="applyButton" disable="true" mnemonicParsing="false" onAction="#applyClick" prefHeight="25.0" prefWidth="125.0" text="Apply" GridPane.columnIndex="3" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
