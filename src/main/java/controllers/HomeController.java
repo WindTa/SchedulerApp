@@ -32,22 +32,37 @@ public class HomeController {
     }
 
     public void editInfoClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/EditInfo.fxml"));
 
+        Main.window.getScene().setRoot(root);
+        Main.window.show();
     }
 
     public void makeAppClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/MakeApp.fxml"));
 
+        Main.window.getScene().setRoot(root);
+        Main.window.show();
     }
 
     public void cancelAppClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/CancelApp.fxml"));
 
+        Main.window.getScene().setRoot(root);
+        Main.window.show();
     }
 
     public void editAppClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/EditApp.fxml"));
 
+        Main.window.getScene().setRoot(root);
+        Main.window.show();
     }
 
     public void editColorClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/EditColor.fxml"));
 
+        Main.window.getScene().setRoot(root);
+        Main.window.show();
     }
 }
