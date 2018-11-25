@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SchedulerApp/main/java/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SchedulerApp/main/java/controllers/EditInfoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SchedulerApp/main/java/controllers/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SchedulerApp/main/java/controllers/HomeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SchedulerApp/main/java/controllers/SignInController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SchedulerApp/main/java/controllers/SignUpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SchedulerApp/main/java/controllers/SignUpController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SchedulerApp/main/resources/view/EditInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SchedulerApp/main/resources/view/EditInfo.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SchedulerApp/main/resources/view/SignUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SchedulerApp/main/resources/view/SignUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Validate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Validate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditInfoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SignInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SignInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/SignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/SignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/EditInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/EditInfo.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -170,7 +154,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/controllers/EditInfoController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-264">
+            <state relative-caret-position="1113">
               <caret line="116" column="42" lean-forward="true" selection-start-line="116" selection-start-column="42" selection-end-line="116" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -365,7 +349,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543146974499" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543147297246" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -476,18 +460,17 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1543012659130" duration="11515000" />
       <workItem from="1543040700381" duration="10500000" />
-      <workItem from="1543054943703" duration="47636000" />
+      <workItem from="1543054943703" duration="47927000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70953000" />
+    <option name="totallyTimeSpent" value="71244000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" weight="0.15245202" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.15245202" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -497,7 +480,7 @@
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.329718" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.3308026" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.3308026" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -813,7 +796,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/EditInfoController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-264">
+        <state relative-caret-position="1113">
           <caret line="116" column="42" lean-forward="true" selection-start-line="116" selection-start-column="42" selection-end-line="116" selection-end-column="42" />
           <folding>
             <element signature="imports" expanded="true" />
