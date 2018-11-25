@@ -6,12 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 
 public class Main extends Application {
 
     public static Connection con;
     public static Stage window;
+    public static String user;
 
     public static void main(String[] args) {
         con = ConnectionManager.getConnection();
@@ -21,9 +23,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         window = stage;
-        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignUp.fxml"));
 
-        Scene scene = new Scene(root, 1280, 720);
 
         window.setTitle("J&K Scheduler");
 
@@ -31,6 +31,9 @@ public class Main extends Application {
             e.consume();
             closeProgram();
         });
+
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignUp.fxml"));
+        Scene scene = new Scene(root, 1280, 720);
 
         window.setScene(scene);
         window.show();
