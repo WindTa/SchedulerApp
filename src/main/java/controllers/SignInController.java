@@ -39,10 +39,15 @@ public class SignInController {
                 String query = "SELECT * FROM user WHERE email ='"
                         + emailText.getText() + "' and BINARY password ='"
                         + passwordText.getText() + "'";
-                ResultSet rs = stmt.executeQuery(query);
+                ResultSet user = stmt.executeQuery(query);
 
-                if (rs.next()) {
-                    Main.user = new User(rs.getString("email"), rs.getString("password"), rs.getString("name"), rs.getDate("birthdate").toLocalDate());
+                query = "*SELECT * FROM setting WHERE email = '"
+                        + emailText.getText() + "'";
+                ResultSet setting = stmt.executeQuery(query);
+
+                if (user.next()) {
+                    Main.user = new User(user, setting);
+
                     Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
 
                     Main.window.getScene().setRoot(root);
