@@ -33,15 +33,15 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Settings">
                <items>
-                  <Menu mnemonicParsing="false" text="Mode">
+                  <Menu fx:id="modeMenu" mnemonicParsing="false" text="Mode">
                      <items>
-                        <RadioMenuItem mnemonicParsing="false" selected="true" text="Month">
+                        <RadioMenuItem fx:id="monthItem" mnemonicParsing="false" onAction="#monthItemClick" text="Month">
                            <toggleGroup>
                               <ToggleGroup fx:id="calendarMode" />
                            </toggleGroup>
                         </RadioMenuItem>
-                        <RadioMenuItem mnemonicParsing="false" text="Week" toggleGroup="$calendarMode" />
-                        <RadioMenuItem mnemonicParsing="false" text="Day" toggleGroup="$calendarMode" />
+                        <RadioMenuItem fx:id="weekItem" mnemonicParsing="false" onAction="#weekItemClick" text="Week" toggleGroup="$calendarMode" />
+                        <RadioMenuItem fx:id="dayItem" mnemonicParsing="false" onAction="#dayItemClick" text="Day" toggleGroup="$calendarMode" />
                      </items>
                   </Menu>
                   <MenuItem fx:id="changeColorButton" mnemonicParsing="false" onAction="#editColorClick" text="Change Color..." />
