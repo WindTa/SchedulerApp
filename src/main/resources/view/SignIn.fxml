@@ -7,15 +7,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-      minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-      xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="main.java.controllers.SignInController">
+<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.SignInController">
    <children>
       <VBox alignment="CENTER" spacing="20.0">
          <children>
-            <TextField prefHeight="25.0" prefWidth="130.0" promptText="Username" />
-            <PasswordField promptText="Password" />
+            <TextField fx:id="emailText" prefHeight="25.0" prefWidth="130.0" promptText="Email" />
+            <PasswordField fx:id="passwordText" promptText="Password" />
             <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInClick" prefHeight="25.0" prefWidth="197.0" text="Sign In" />
             <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpClick" prefHeight="25.0" prefWidth="197.0" text="Don't have an account?" />
          </children>

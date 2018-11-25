@@ -45,10 +45,18 @@ public class SignUpController {
                 Statement stmt = Main.con.createStatement();
                 String query = "INSERT INTO user (email, password, name, birthdate) VALUES"
                         + "('"
-                        + emailText.getText() + "','"
-                        + passwordText.getText() + "','"
-                        + nameText.getText() + "','"
+                        + emailText.getText() + "', '"
+                        + passwordText.getText() + "', '"
+                        + nameText.getText() + "', '"
                         + datePicker.getValue() + "')";
+                stmt.executeUpdate(query);
+
+                query = "INSERT INTO setting (email, calendarmode, calendarcolor, appointmentcolor) VALUES"
+                        + "('"
+                        + emailText.getText() + "', '"
+                        + "Week', '"
+                        + "#FFFFFF', '"
+                        + "#0000FF')";
                 stmt.executeUpdate(query);
 
                 Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignIn.fxml"));
@@ -59,7 +67,7 @@ public class SignUpController {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("User Exists");
                 alert.setHeaderText(null);
-                alert.setContentText("This Email Already Has An Account");
+                alert.setContentText("This email already has an account");
                 alert.showAndWait();
             } catch (SQLException e) {
                 e.printStackTrace();

@@ -18,7 +18,7 @@ public class Validate {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Email");
             alert.setHeaderText(null);
-            alert.setContentText("Please Enter Valid Email");
+            alert.setContentText("Please enter valid email");
             alert.showAndWait();
             return false;
         }
@@ -59,7 +59,7 @@ public class Validate {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Validate Birth Date");
             alert.setHeaderText(null);
-            alert.setContentText("Birth Date must not be empty");
+            alert.setContentText("Birth date must not be empty");
             alert.showAndWait();
             return false;
         }
