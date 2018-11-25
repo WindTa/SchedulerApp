@@ -19,10 +19,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class SignInController {
-    @FXML
-    TextField emailText;
-    @FXML
-    PasswordField passwordText;
+    @FXML TextField emailText;
+    @FXML PasswordField passwordText;
 
     public void signUpClick(ActionEvent event) throws IOException {
 

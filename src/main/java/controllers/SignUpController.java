@@ -23,14 +23,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SignUpController {
-    @FXML
-    TextField emailText;
-    @FXML
-    PasswordField passwordText;
-    @FXML
-    TextField nameText;
-    @FXML
-    DatePicker datePicker;
+    @FXML TextField emailText;
+    @FXML PasswordField passwordText;
+    @FXML TextField nameText;
+    @FXML DatePicker birthDate;
 
     public void signInClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignIn.fxml"));
@@ -40,7 +36,7 @@ public class SignUpController {
     }
 
     public void signUpClick(ActionEvent event) throws IOException {
-        if (Validate.email(emailText) && Validate.password(passwordText) && Validate.general(nameText) && Validate.date(datePicker)) {
+        if (Validate.email(emailText) && Validate.password(passwordText) && Validate.general(nameText) && Validate.date(birthDate)) {
             try {
                 Statement stmt = Main.con.createStatement();
                 String query = "INSERT INTO user (email, password, name, birthdate) VALUES"
@@ -48,7 +44,7 @@ public class SignUpController {
                         + emailText.getText() + "', '"
                         + passwordText.getText() + "', '"
                         + nameText.getText() + "', '"
-                        + datePicker.getValue() + "')";
+                        + birthDate.getValue() + "')";
                 stmt.executeUpdate(query);
 
                 query = "INSERT INTO setting (email, calendarmode, calendarcolor, appointmentcolor) VALUES"
