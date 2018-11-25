@@ -1,0 +1,27 @@
+CREATE TABLE user
+(
+    email varchar(50) PRIMARY KEY,
+    password varchar(16),
+    name varchar(50),
+    birthdate date
+);
+
+CREATE TABLE setting
+(
+    email varchar(50) PRIMARY KEY,
+    calendarmode varchar(5),
+    calendarcolor varchar(7),
+    appointmentcolor varchar(7),
+    CONSTRAINT setting_user_fk FOREIGN KEY (email) REFERENCES user (email)
+);
+
+CREATE TABLE appointment
+(
+    email varchar(50) PRIMARY KEY,
+    date date,
+    time time,
+    category varchar(50),
+    event varchar(50),
+    description text,
+    CONSTRAINT appointment_user_fk FOREIGN KEY (email) REFERENCES user (email)
+);
