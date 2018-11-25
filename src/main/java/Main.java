@@ -1,9 +1,11 @@
 package main.java;
 
 import javafx.application.Application;
+import javafx.beans.property.Property;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,7 +16,7 @@ public class Main extends Application {
 
     public static Connection con;
     public static Stage window;
-    public static ResultSet user;
+    public static User user;
 
     public static void main(String[] args) {
         con = ConnectionManager.getConnection();
@@ -38,6 +40,14 @@ public class Main extends Application {
 
         window.setScene(scene);
         window.show();
+    }
+
+    public static void alert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
 
     public static void closeProgram() {
