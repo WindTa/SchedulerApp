@@ -967,59 +967,105 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="243" parent="4" name="setting"/>
-    <table id="244" parent="4" name="user"/>
-    <column id="245" parent="243" name="email">
+    <table id="243" parent="4" name="appointment"/>
+    <table id="244" parent="4" name="setting"/>
+    <table id="245" parent="4" name="user"/>
+    <column id="246" parent="243" name="email">
       <Position>1</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="243" name="calendarmode">
+    <column id="247" parent="243" name="date">
       <Position>2</Position>
-      <DataType>varchar(5)|0s</DataType>
-      <DefaultExpression>&apos;Week&apos;</DefaultExpression>
+      <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="243" name="calendarcolor">
+    <column id="248" parent="243" name="time">
       <Position>3</Position>
-      <DataType>varchar(7)|0s</DataType>
-      <DefaultExpression>&apos;#FFFFFF&apos;</DefaultExpression>
+      <DataType>time|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="243" name="appointmentcolor">
+    <column id="249" parent="243" name="category">
       <Position>4</Position>
-      <DataType>varchar(7)|0s</DataType>
-      <DefaultExpression>&apos;#0000FF&apos;</DefaultExpression>
+      <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="249" parent="243" name="PRIMARY">
+    <column id="250" parent="243" name="event">
+      <Position>5</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="251" parent="243" name="description">
+      <Position>6</Position>
+      <DataType>text|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="252" parent="243" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="250" parent="244" name="email">
+    <foreign-key id="253" parent="243" name="appointment_user_fk">
+      <ColNames>email</ColNames>
+      <RefSchemaName>jk</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>email</RefColNames>
+    </foreign-key>
+    <column id="254" parent="244" name="email">
       <Position>1</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="244" name="password">
+    <column id="255" parent="244" name="calendarmode">
+      <Position>2</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="256" parent="244" name="calendarcolor">
+      <Position>3</Position>
+      <DataType>varchar(7)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="257" parent="244" name="appointmentcolor">
+      <Position>4</Position>
+      <DataType>varchar(7)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="258" parent="244" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>email</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="259" parent="244" name="setting_user_fk">
+      <ColNames>email</ColNames>
+      <RefSchemaName>jk</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>email</RefColNames>
+    </foreign-key>
+    <column id="260" parent="245" name="email">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="245" name="password">
       <Position>2</Position>
       <DataType>varchar(16)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="244" name="name">
+    <column id="262" parent="245" name="name">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="244" name="birthdate">
+    <column id="263" parent="245" name="birthdate">
       <Position>4</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="254" parent="244" name="PRIMARY">
+    <key id="264" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
       <Primary>1</Primary>
