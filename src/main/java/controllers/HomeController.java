@@ -11,8 +11,16 @@ import main.java.Main;
 import java.io.IOException;
 
 public class HomeController {
-    public void logoutClick(ActionEvent event) throws IOException {
+    public void importClick(ActionEvent event) throws IOException {
 
+    }
+
+    public void exportClick(ActionEvent event) throws IOException {
+
+    }
+
+    public void logoutClick(ActionEvent event) throws IOException {
+        Main.user = "";
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignUp.fxml"));
 
         Main.window.getScene().setRoot(root);
@@ -21,5 +29,25 @@ public class HomeController {
 
     public void exitClick(ActionEvent event) throws IOException {
         Main.closeProgram();
+    }
+
+    public void editInfoClick(ActionEvent event) throws IOException {
+
+    }
+
+    public void makeAppClick(ActionEvent event) throws IOException {
+
+    }
+
+    public void cancelAppClick(ActionEvent event) throws IOException {
+
+    }
+
+    public void editAppClick(ActionEvent event) throws IOException {
+
+    }
+
+    public void editColorClick(ActionEvent event) throws IOException {
+
     }
 }
