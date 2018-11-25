@@ -37,7 +37,11 @@ public class Main extends Application {
     }
 
     public static void closeProgram() {
-        System.out.println("Closing program...");
+        try {
+            con.close();
+        } catch (Exception e) {
+            System.out.println("Couldn't close connection");
+        }
         window.close();
     }
 }
