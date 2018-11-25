@@ -12,8 +12,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Import..." />
-                  <MenuItem mnemonicParsing="false" text="Export..." />
+              <MenuItem fx:id="importButton" mnemonicParsing="false" onAction="#importClick" text="Import..." />
+                  <MenuItem fx:id="exportButton" mnemonicParsing="false" onAction="#exportClick" text="Export..." />
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="logoutButton" mnemonicParsing="false" onAction="#logoutClick" text="Log out" />
                   <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#exitClick" text="Exit" />
@@ -21,14 +21,14 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Account">
               <items>
-                  <MenuItem mnemonicParsing="false" text="Edit Info..." />
+                  <MenuItem fx:id="editInfoButton" mnemonicParsing="false" onAction="#editInfoClick" text="Edit Info..." />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Appointment">
               <items>
-                <MenuItem mnemonicParsing="false" text="Make Appointment..." />
-                  <MenuItem mnemonicParsing="false" text="Cancel Appointment..." />
-                  <MenuItem mnemonicParsing="false" text="Edit Appointment..." />
+                <MenuItem fx:id="makeAppButton" mnemonicParsing="false" onAction="#makeAppClick" text="Make Appointment..." />
+                  <MenuItem fx:id="cancelAppButton" mnemonicParsing="false" onAction="#cancelAppClick" text="Cancel Appointment..." />
+                  <MenuItem fx:id="editAppButton" mnemonicParsing="false" onAction="#editAppClick" text="Edit Appointment..." />
               </items>
             </Menu>
             <Menu mnemonicParsing="false" text="Settings">
@@ -44,7 +44,7 @@
                         <RadioMenuItem mnemonicParsing="false" text="Day" toggleGroup="$calendarMode" />
                      </items>
                   </Menu>
-                  <MenuItem mnemonicParsing="false" text="Change Color..." />
+                  <MenuItem fx:id="changeColorButton" mnemonicParsing="false" onAction="#changeColorClick" text="Change Color..." />
                </items>
             </Menu>
         </menus>
