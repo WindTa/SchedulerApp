@@ -11,12 +11,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.java.Main;
+import main.java.User;
 import main.java.Validate;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 
 public class SignInController {
     @FXML TextField emailText;
@@ -40,17 +42,13 @@ public class SignInController {
                 ResultSet rs = stmt.executeQuery(query);
 
                 if (rs.next()) {
-                    Main.user = rs;
+                    Main.user = new User(rs.getString("email"), rs.getString("password"), rs.getString("name"), rs.getDate("birthdate").toLocalDate());
                     Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
 
                     Main.window.getScene().setRoot(root);
                     Main.window.show();
                 } else {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Credential Mismatch");
-                    alert.setHeaderText(null);
-                    alert.setContentText("The Email/PW combination does not match any account");
-                    alert.showAndWait();
+                    Main.alert(Alert.AlertType.WARNING, "Credential Mismatch", "The Email/PW combination does not match any account");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();

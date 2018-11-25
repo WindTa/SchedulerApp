@@ -60,11 +60,7 @@ public class SignUpController {
                 Main.window.getScene().setRoot(root);
                 Main.window.show();
             } catch (SQLIntegrityConstraintViolationException e) {
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("User Exists");
-                alert.setHeaderText(null);
-                alert.setContentText("This email already has an account");
-                alert.showAndWait();
+                Main.alert(Alert.AlertType.WARNING, "User Exists", "This email already has an account");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
