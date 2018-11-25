@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -18,25 +19,24 @@
                </font>
             </Text>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button fx:id="homeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#homeClick" prefHeight="25.0" prefWidth="132.0" text="Home" />
+            <Button fx:id="homeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#homeClick" prefHeight="25.0" prefWidth="125.0" text="Home" />
          </children>
       </HBox>
       <Separator prefWidth="200.0" />
-      <GridPane alignment="CENTER" hgap="20.0" VBox.vgrow="ALWAYS">
+      <GridPane alignment="CENTER" hgap="20.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Calendar Color">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <Text fx:id="oldEmailText" fill="#909090" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="1" />
-            <TextField fx:id="newEmailText" disable="true" promptText="New Email" GridPane.columnIndex="2" />
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3">
-               <children>
-                  <Button fx:id="applyButton1" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#applyClick1" text="Apply" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="editButton1" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editClick1" text="Edit" textFill="BLUE" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
+            <RadioButton fx:id="beforeButton" mnemonicParsing="false" onAction="#beforeClick" selected="true" text="Before">
+               <toggleGroup>
+                  <ToggleGroup fx:id="state" />
+               </toggleGroup>
+            </RadioButton>
+            <Button fx:id="editButton1" mnemonicParsing="false" onAction="#editClick1" prefHeight="25.0" prefWidth="125.0" text="Edit" textFill="BLUE" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <RadioButton fx:id="afterButton" mnemonicParsing="false" onAction="#afterClick" text="After" toggleGroup="$state" GridPane.rowIndex="1" />
+            <Label text="Calendar" GridPane.columnIndex="1" />
+            <Label text="Appointment" GridPane.columnIndex="2" />
+            <ColorPicker fx:id="calendarColor" disable="true" onAction="#calendarClick" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ColorPicker fx:id="appointmentColor" disable="true" onAction="#appointmentClick" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="applyButton1" disable="true" mnemonicParsing="false" onAction="#applyClick1" prefHeight="25.0" prefWidth="125.0" text="Apply" GridPane.columnIndex="3" />
          </children>
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -46,39 +46,16 @@
          </columnConstraints>
          <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </GridPane>
-      <Separator prefWidth="200.0" />
-      <GridPane hgap="20.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Appointment Color">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Text>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="3">
-               <children>
-                  <Button fx:id="applyButton2" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#applyClick2" text="Apply" HBox.hgrow="ALWAYS" />
-                  <Button fx:id="editButton2" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#editClick2" text="Edit" textFill="BLUE" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <PasswordField fx:id="oldPasswordText" disable="true" promptText="Old Password" GridPane.columnIndex="1" />
-            <PasswordField fx:id="newPasswordText" disable="true" promptText="New Password" GridPane.columnIndex="2" />
-         </children>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
       <Separator prefWidth="200.0" />
+      <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+         <children>
+            <Rectangle fx:id="calendarShape" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="270.0" stroke="BLACK" strokeType="INSIDE" width="270.0" HBox.hgrow="ALWAYS" />
+            <Rectangle fx:id="appointmentShape" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="270.0" stroke="BLACK" strokeType="INSIDE" width="270.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
