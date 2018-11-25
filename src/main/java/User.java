@@ -9,6 +9,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class User {
@@ -17,11 +18,19 @@ public class User {
     private StringProperty name;
     private ObjectProperty<LocalDate> birthdate;
 
-    public User(String email, String password, String name, LocalDate birthdate) {
-        this.email = new SimpleStringProperty(this, "email", email);
-        this.password = new SimpleStringProperty(this, "password", password);
-        this.name = new SimpleStringProperty(this, "name", name);
-        this.birthdate = new SimpleObjectProperty<LocalDate>(birthdate);
+    private StringProperty calendarMode;
+    private StringProperty calendarColor;
+    private StringProperty appointmentColor;
+
+    //rs.getString("email"), rs.getString("password"), rs.getString("name"), rs.getDate("birthdate").toLocalDate()
+    public User(ResultSet user, ResultSet setting) throws SQLException {
+        this.email = new SimpleStringProperty(this, "email", user.getString("email"));
+        this.password = new SimpleStringProperty(this, "password", user.getString("password"));
+        this.name = new SimpleStringProperty(this, "name", user.getString("name"));
+        this.birthdate = new SimpleObjectProperty<LocalDate>(user.getDate("birthdate").toLocalDate());
+        this.calendarMode = new SimpleStringProperty(this, "calendarmode", setting.getString("calendarmode"));
+        this.calendarColor = new SimpleStringProperty(this, "calendarcolor", setting.getString("calendarcolor"));
+        this.appointmentColor = new SimpleStringProperty(this, "appointmentcolor", setting.getString("appointmentcolor"));
     }
 
     public String getEmail() {
@@ -70,5 +79,41 @@ public class User {
 
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate.set(birthdate);
+    }
+
+    public String getCalendarMode() {
+        return calendarMode.get();
+    }
+
+    public StringProperty calendarModeProperty() {
+        return calendarMode;
+    }
+
+    public void setCalendarMode(String calendarMode) {
+        this.calendarMode.set(calendarMode);
+    }
+
+    public String getCalendarColor() {
+        return calendarColor.get();
+    }
+
+    public StringProperty calendarColorProperty() {
+        return calendarColor;
+    }
+
+    public void setCalendarColor(String calendarColor) {
+        this.calendarColor.set(calendarColor);
+    }
+
+    public String getAppointmentColor() {
+        return appointmentColor.get();
+    }
+
+    public StringProperty appointmentColorProperty() {
+        return appointmentColor;
+    }
+
+    public void setAppointmentColor(String appointmentColor) {
+        this.appointmentColor.set(appointmentColor);
     }
 }
