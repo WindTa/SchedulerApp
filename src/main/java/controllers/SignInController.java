@@ -37,7 +37,7 @@ public class SignInController {
             try {
                 Statement stmt = Main.con.createStatement();
                 String query = "SELECT * FROM user WHERE email ='"
-                        + emailText.getText() + "' and password ='"
+                        + emailText.getText() + "' and BINARY password ='"
                         + passwordText.getText() + "'";
                 ResultSet rs = stmt.executeQuery(query);
 
