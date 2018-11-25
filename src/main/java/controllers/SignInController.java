@@ -42,7 +42,7 @@ public class SignInController {
                 ResultSet rs = stmt.executeQuery(query);
 
                 if (rs.next()) {
-                    Main.user = emailText.getText();
+                    Main.user = rs;
                     Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
 
                     Main.window.getScene().setRoot(root);

@@ -20,7 +20,7 @@ public class HomeController {
     }
 
     public void logoutClick(ActionEvent event) throws IOException {
-        Main.user = "";
+        Main.user = null;
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignUp.fxml"));
 
         Main.window.getScene().setRoot(root);

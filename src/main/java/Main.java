@@ -8,12 +8,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 
 public class Main extends Application {
 
     public static Connection con;
     public static Stage window;
-    public static String user;
+    public static ResultSet user;
 
     public static void main(String[] args) {
         con = ConnectionManager.getConnection();

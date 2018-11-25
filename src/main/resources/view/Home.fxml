@@ -44,7 +44,7 @@
                         <RadioMenuItem mnemonicParsing="false" text="Day" toggleGroup="$calendarMode" />
                      </items>
                   </Menu>
-                  <MenuItem fx:id="changeColorButton" mnemonicParsing="false" onAction="#changeColorClick" text="Change Color..." />
+                  <MenuItem fx:id="changeColorButton" mnemonicParsing="false" onAction="#editColorClick" text="Change Color..." />
                </items>
             </Menu>
         </menus>

@@ -18,7 +18,7 @@
                </font>
             </Text>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="111.0" text="Home" />
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Home" />
          </children>
       </HBox>
       <Separator prefWidth="200.0" />
@@ -42,8 +42,8 @@
             <TextField disable="true" promptText="New Email" GridPane.columnIndex="2" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="3">
                <children>
-                  <Button disable="true" mnemonicParsing="false" text="Apply" />
-                  <Text fill="BLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit" underline="true" />
+                  <Button disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Apply" HBox.hgrow="ALWAYS" />
+                  <Text fx:id="editButton1" fill="BLUE" onDragDetected="#editClick1" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit" underline="true" />
                </children>
             </HBox>
          </children>
@@ -72,8 +72,8 @@
             <TextField disable="true" promptText="New Password" GridPane.columnIndex="2" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="3">
                <children>
-                  <Button disable="true" mnemonicParsing="false" text="Apply" />
-                  <Text fill="BLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit" underline="true" />
+                  <Button disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Apply" HBox.hgrow="ALWAYS" />
+                  <Text fx:id="editButton2" fill="BLUE" onDragDetected="#editClick2" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit" underline="true" />
                </children>
             </HBox>
          </children>
@@ -99,8 +99,8 @@
             <TextField disable="true" promptText="New Name" GridPane.columnIndex="2" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="3">
                <children>
-                  <Button disable="true" mnemonicParsing="false" text="Apply" />
-                  <Text fill="BLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit" underline="true" />
+                  <Button disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Apply" HBox.hgrow="ALWAYS" />
+                  <Text fx:id="editButton3" fill="BLUE" onDragDetected="#editClick3" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit" underline="true" />
                </children>
             </HBox>
          </children>
@@ -125,8 +125,8 @@
             <TextField disable="true" promptText="New Birthdate" GridPane.columnIndex="2" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="3">
                <children>
-                  <Button disable="true" mnemonicParsing="false" text="Apply" />
-                  <Text fill="BLUE" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit" underline="true" />
+                  <Button disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Apply" HBox.hgrow="ALWAYS" />
+                  <Text fx:id="editButton4" fill="BLUE" onDragDetected="#editClick4" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit" underline="true" />
                </children>
             </HBox>
          </children>
