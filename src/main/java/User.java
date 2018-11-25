@@ -22,7 +22,6 @@ public class User {
     private StringProperty calendarColor;
     private StringProperty appointmentColor;
 
-    //rs.getString("email"), rs.getString("password"), rs.getString("name"), rs.getDate("birthdate").toLocalDate()
     public User(ResultSet user, ResultSet setting) throws SQLException {
         this.email = new SimpleStringProperty(this, "email", user.getString("email"));
         this.password = new SimpleStringProperty(this, "password", user.getString("password"));
