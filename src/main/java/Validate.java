@@ -15,11 +15,7 @@ public class Validate {
         if (m.find() && m.group().equals(emailText.getText())) {
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Email");
-            alert.setHeaderText(null);
-            alert.setContentText("Please enter valid email");
-            alert.showAndWait();
+            Main.alert(Alert.AlertType.WARNING, "Validate Email", "Please enter valid email");
             return false;
         }
     }
@@ -30,24 +26,16 @@ public class Validate {
         if (m.find() && m.group().equals(passwordText.getText())) {
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Password");
-            alert.setHeaderText(null);
-            alert.setContentText("Password must contain at least one (Digit, Uppercase or Lowercase Character) and length must be between 8-16 characters");
-            alert.showAndWait();
+            Main.alert(Alert.AlertType.WARNING, "Validate Password", "Password must contain at least one (Digit, Uppercase or Lowercase Character) and length must be between 8-16 characters");
             return false;
         }
     }
 
-    public static boolean general(TextField nameText) {
-        if (!nameText.getText().isEmpty()) {
+    public static boolean general(TextField generalText) {
+        if (!generalText.getText().isEmpty()) {
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Name");
-            alert.setHeaderText(null);
-            alert.setContentText("Name must not be empty");
-            alert.showAndWait();
+            Main.alert(Alert.AlertType.WARNING, "Validate Name", "Name must not be empty");
             return false;
         }
     }
@@ -56,11 +44,16 @@ public class Validate {
         if (datePicker.getValue() != null) {
             return true;
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Validate Birth Date");
-            alert.setHeaderText(null);
-            alert.setContentText("Birth date must not be empty");
-            alert.showAndWait();
+            Main.alert(Alert.AlertType.WARNING, "Validate Birth Date", "Birth date must not be empty");
+            return false;
+        }
+    }
+
+    public static boolean isMatchingPW(PasswordField passwordText) {
+        if (passwordText.getText().equals(Main.user.getPassword())) {
+            return true;
+        } else {
+            Main.alert(Alert.AlertType.WARNING, "Password Mismatch", "Old password does not match");
             return false;
         }
     }
