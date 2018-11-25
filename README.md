@@ -35,6 +35,10 @@ App to make schedules and collaborate with other users
 
 # To do list
 
+- Fix primary key for appointments
+
 - Create appointments
+
 - Import/export appointments
+
 - Create calendar
