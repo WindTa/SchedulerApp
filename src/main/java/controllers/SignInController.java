@@ -41,11 +41,13 @@ public class SignInController {
                         + passwordText.getText() + "'";
                 ResultSet user = stmt.executeQuery(query);
 
-                query = "*SELECT * FROM setting WHERE email = '"
+                stmt = Main.con.createStatement();
+                query = "SELECT * FROM setting WHERE email = '"
                         + emailText.getText() + "'";
                 ResultSet setting = stmt.executeQuery(query);
 
                 if (user.next()) {
+                    setting.next();
                     Main.user = new User(user, setting);
 
                     Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
