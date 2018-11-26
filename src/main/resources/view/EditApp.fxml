@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="main.java.controllers.EditAppController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MakeAppController">
+   <children>
+      <HBox prefHeight="24.0" prefWidth="560.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Appointment">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            <Button fx:id="homeButton" mnemonicParsing="false" onAction="#homeClick" prefHeight="25.0" prefWidth="125.0" text="Home" />
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+      <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox spacing="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox spacing="10.0">
+                     <children>
+                        <JFXDatePicker maxWidth="1.7976931348623157E308" promptText="Start Date" />
+                        <JFXDatePicker maxWidth="1.7976931348623157E308" promptText="End Date" />
+                        <JFXTimePicker maxWidth="1.7976931348623157E308" promptText="Start Time" />
+                        <JFXTimePicker maxWidth="1.7976931348623157E308" promptText="End Time" />
+                        <JFXComboBox maxWidth="1.7976931348623157E308" promptText="Category" />
+                        <JFXTextField opacity="0.37" promptText="Keywords" />
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Search" />
+                        <JFXListView maxWidth="1.7976931348623157E308" prefHeight="51.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+                  <Separator orientation="VERTICAL" prefHeight="200.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <JFXDatePicker prefHeight="25.0" prefWidth="200.0" promptText="New Date" />
+                        <JFXTimePicker prefHeight="25.0" prefWidth="200.0" promptText="New Start Time" />
+                        <JFXTimePicker prefHeight="25.0" prefWidth="200.0" promptText="New End Time" />
+                        <JFXComboBox prefHeight="25.0" prefWidth="200.0" promptText="New Category" />
+                        <JFXTextField promptText="New Title" />
+                        <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="New Description" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                           <children>
+                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Apply" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </HBox.margin>
+            </HBox>
+         </children>
+      </HBox>
+      <Separator prefWidth="200.0" />
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
