@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/lib/Day.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Day.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/lib/Month.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Month.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/lib/Week.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Week.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/MakeApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/MakeApp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Validate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Validate.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -116,7 +113,7 @@
           <entry key="css" value="15" />
           <entry key="dummy" value="155" />
           <entry key="fxml" value="390" />
-          <entry key="java" value="17636" />
+          <entry key="java" value="17669" />
           <entry key="sql" value="419" />
           <entry key="txt" value="54" />
         </counts>
@@ -124,7 +121,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="15" />
-          <entry key="JAVA" value="17635" />
+          <entry key="JAVA" value="17668" />
           <entry key="PLAIN_TEXT" value="218" />
           <entry key="SQL" value="420" />
           <entry key="XML" value="390" />
@@ -135,7 +132,7 @@
           <entry key="DDL" value="1" />
           <entry key="css" value="2" />
           <entry key="fxml" value="88" />
-          <entry key="java" value="182" />
+          <entry key="java" value="184" />
           <entry key="setting" value="10" />
           <entry key="sql" value="14" />
           <entry key="user" value="10" />
@@ -145,7 +142,7 @@
         <counts>
           <entry key="CSS" value="2" />
           <entry key="Database Element" value="20" />
-          <entry key="JAVA" value="182" />
+          <entry key="JAVA" value="184" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="2" />
           <entry key="Scratch" value="12" />
@@ -160,54 +157,21 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/MakeAppController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Validate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="14" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="612">
+              <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/view/MakeApp.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/view/CancelApp.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/HomeController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/controllers/SignUpController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+            <state relative-caret-position="676">
+              <caret line="62" column="26" selection-start-line="62" selection-end-line="63" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/view/Home.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="8" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="8" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
     </leaf>
@@ -276,7 +240,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/view/SignUp.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/SignUpController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Validate.java" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/EditInfoController.java" />
         <option value="$PROJECT_DIR$/src/main/db/ddl/DDL" />
         <option value="$PROJECT_DIR$/src/main/resources/view/Home.fxml" />
@@ -295,6 +258,7 @@
         <option value="$PROJECT_DIR$/src/main/java/controllers/CancelAppController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/view/CancelApp.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/controllers/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Validate.java" />
       </list>
     </option>
   </component>
@@ -410,7 +374,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543286231022" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543287764238" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/lib" />
@@ -531,15 +495,16 @@
       <workItem from="1543208403710" duration="2676000" />
       <workItem from="1543220356300" duration="4926000" />
       <workItem from="1543268690307" duration="6675000" />
-      <workItem from="1543283400627" duration="2296000" />
+      <workItem from="1543283400627" duration="3604000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110760000" />
+    <option name="totallyTimeSpent" value="112068000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.16204691" />
       <window_info id="Structure" order="1" weight="0.25" />
@@ -696,21 +661,7 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c0758cd0-8992-4d31-9a2e-2dfdf1e40c54/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Validate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/db/ddl/DDL" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/SignUpController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="653">
-          <caret line="62" column="26" selection-start-line="62" selection-end-line="63" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/view/SignUp.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -881,6 +832,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Validate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="9" selection-end-line="58" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/controllers/SignUpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="676">
+          <caret line="62" column="26" selection-start-line="62" selection-end-line="63" />
         </state>
       </provider>
     </entry>

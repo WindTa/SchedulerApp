@@ -1,5 +1,6 @@
 package main.java;
 
+import com.jfoenix.controls.JFXDatePicker;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.PasswordField;
@@ -35,7 +36,7 @@ public class Validate {
         if (!generalText.getText().isEmpty()) {
             return true;
         } else {
-            Main.alert(Alert.AlertType.WARNING, "Validate Name", "Name must not be empty");
+            Main.alert(Alert.AlertType.WARNING, "Validate Text", "Text must not be empty");
             return false;
         }
     }
@@ -44,7 +45,16 @@ public class Validate {
         if (datePicker.getValue() != null) {
             return true;
         } else {
-            Main.alert(Alert.AlertType.WARNING, "Validate Birth Date", "Birth date must not be empty");
+            Main.alert(Alert.AlertType.WARNING, "Validate Date", "Date must not be empty");
+            return false;
+        }
+    }
+
+    public static boolean date(JFXDatePicker datePicker) {
+        if (datePicker.getValue() != null) {
+            return true;
+        } else {
+            Main.alert(Alert.AlertType.WARNING, "Validate Date", "Date must not be empty");
             return false;
         }
     }
