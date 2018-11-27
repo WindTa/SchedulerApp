@@ -7,8 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.Main;
 
@@ -21,6 +23,7 @@ public class HomeController {
     @FXML RadioMenuItem monthItem;
     @FXML RadioMenuItem weekItem;
     @FXML RadioMenuItem dayItem;
+    @FXML MenuItem importButton;
 
     @FXML
     public void initialize() {
@@ -35,7 +38,9 @@ public class HomeController {
     }
 
     public void importClick(ActionEvent event) throws IOException {
-
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Import Schedule");
+        fileChooser.showOpenDialog(importButton.getParentPopup().getScene().getWindow());
     }
 
     public void exportClick(ActionEvent event) throws IOException {
