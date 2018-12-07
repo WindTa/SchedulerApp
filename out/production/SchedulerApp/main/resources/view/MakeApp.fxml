@@ -33,7 +33,7 @@
             <JFXDatePicker prefHeight="25.0" prefWidth="200.0" promptText="Date" />
             <JFXTimePicker prefHeight="25.0" prefWidth="200.0" promptText="Start Time" />
             <JFXTimePicker prefHeight="25.0" prefWidth="200.0" promptText="End Time" />
-            <JFXComboBox prefHeight="25.0" prefWidth="200.0" promptText="Category" />
+            <JFXComboBox editable="true" prefHeight="25.0" prefWidth="200.0" promptText="Category" />
             <JFXTextField promptText="Title" />
             <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Description" VBox.vgrow="ALWAYS" />
             <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="200.0" VBox.vgrow="NEVER">

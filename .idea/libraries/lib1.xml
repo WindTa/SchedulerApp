@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/out/production/SchedulerApp/main/resources/lib/controlsfx-8.40.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/production/SchedulerApp/main/resources/lib/mysql-connector-java-8.0.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/out/production/SchedulerApp/main/resources/lib/jfoenix-8.0.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
