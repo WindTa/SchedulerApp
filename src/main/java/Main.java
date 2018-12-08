@@ -5,12 +5,9 @@ import javafx.beans.property.Property;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
 
 public class Main extends Application {
 
@@ -27,7 +24,6 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         window = stage;
 
-
         window.setTitle("J&K Scheduler");
 
         window.setOnCloseRequest(e -> {
@@ -42,14 +38,6 @@ public class Main extends Application {
         window.show();
     }
 
-    public static void alert(Alert.AlertType alertType, String title, String content) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(content);
-        alert.showAndWait();
-    }
-
     public static void closeProgram() {
         try {
             con.close();
@@ -57,5 +45,10 @@ public class Main extends Application {
             System.out.println("Couldn't close connection");
         }
         window.close();
+    }
+
+    public static void update(Parent root){
+        Main.window.getScene().setRoot(root);
+        Main.window.show();
     }
 }

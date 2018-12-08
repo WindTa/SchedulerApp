@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.HBox?>
@@ -15,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MakeAppController">
+<VBox xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MakeAppController">
    <children>
       <HBox prefHeight="24.0" prefWidth="560.0">
          <children>
@@ -33,12 +32,12 @@
          <children>
             <HBox spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox spacing="10.0">
+                  <VBox maxWidth="200.0" spacing="10.0">
                      <children>
-                        <JFXDatePicker maxWidth="1.7976931348623157E308" promptText="Start Date" />
-                        <JFXDatePicker maxWidth="1.7976931348623157E308" promptText="End Date" />
-                        <JFXTimePicker maxWidth="1.7976931348623157E308" promptText="Start Time" />
-                        <JFXTimePicker maxWidth="1.7976931348623157E308" promptText="End Time" />
+                        <DatePicker maxWidth="200.0" promptText="Start Date" />
+                        <DatePicker maxWidth="200.0" promptText="End Date" />
+                        <JFXTextField maxWidth="200.0" promptText="Start Time HH:MM AM/PM" />
+                        <JFXTextField promptText="End Time HH:MM AM/PM" />
                         <JFXComboBox maxWidth="1.7976931348623157E308" promptText="Category" />
                         <JFXTextField opacity="0.37" promptText="Keywords" />
                         <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="25.0" prefWidth="175.0" text="Search" />
@@ -48,9 +47,9 @@
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <JFXDatePicker prefHeight="25.0" prefWidth="200.0" promptText="New Date" />
-                        <JFXTimePicker prefHeight="25.0" prefWidth="200.0" promptText="New Start Time" />
-                        <JFXTimePicker prefHeight="25.0" prefWidth="200.0" promptText="New End Time" />
+                        <DatePicker maxWidth="200.0" promptText="New Date" />
+                        <JFXTextField maxWidth="200.0" promptText="New Start Time HH:MM AM/PM" />
+                        <JFXTextField maxWidth="200.0" promptText="New End Time HH:MM AM/PM" />
                         <JFXComboBox prefHeight="25.0" prefWidth="200.0" promptText="New Category" />
                         <JFXTextField promptText="New Title" />
                         <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="New Description" VBox.vgrow="ALWAYS" />

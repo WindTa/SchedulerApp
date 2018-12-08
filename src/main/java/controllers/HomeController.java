@@ -19,11 +19,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class HomeController {
-    @FXML ToggleGroup calendarMode;
-    @FXML RadioMenuItem monthItem;
-    @FXML RadioMenuItem weekItem;
-    @FXML RadioMenuItem dayItem;
-    @FXML MenuItem importButton;
+    @FXML private ToggleGroup calendarMode;
+    @FXML private RadioMenuItem monthItem;
+    @FXML private RadioMenuItem weekItem;
+    @FXML private RadioMenuItem dayItem;
+    @FXML private MenuItem importButton;
+    private Statement stmt;
 
     @FXML
     public void initialize() {
@@ -50,9 +51,7 @@ public class HomeController {
     public void logoutClick(ActionEvent event) throws IOException {
         Main.user = null;
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignUp.fxml"));
-
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        Main.update(root);
     }
 
     public void exitClick(ActionEvent event) throws IOException {
@@ -61,42 +60,32 @@ public class HomeController {
 
     public void editInfoClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/EditInfo.fxml"));
-
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        Main.update(root);
     }
 
     public void makeAppClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/MakeApp.fxml"));
-
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        Main.update(root);
     }
 
     public void cancelAppClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/CancelApp.fxml"));
-
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        Main.update(root);
     }
 
     public void editAppClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/EditApp.fxml"));
-
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        Main.update(root);
     }
 
     public void editColorClick(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/EditColor.fxml"));
-
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        Main.update(root);
     }
 
     public void monthItemClick(ActionEvent event) {
         try {
-            Statement stmt = Main.con.createStatement();
+            stmt = Main.con.createStatement();
             String query = "UPDATE setting "
                     + " SET calendarmode = 'Month'"
                     + " WHERE email = '" + Main.user.getEmail()
@@ -111,7 +100,7 @@ public class HomeController {
 
     public void weekItemClick(ActionEvent event) {
         try {
-            Statement stmt = Main.con.createStatement();
+            stmt = Main.con.createStatement();
             String query = "UPDATE setting "
                     + " SET calendarmode = 'Week'"
                     + " WHERE email = '" + Main.user.getEmail()
@@ -125,7 +114,7 @@ public class HomeController {
 
     public void dayItemClick(ActionEvent event) {
         try {
-            Statement stmt = Main.con.createStatement();
+            stmt = Main.con.createStatement();
             String query = "UPDATE setting "
                     + " SET calendarmode = 'Day'"
                     + " WHERE email = '" + Main.user.getEmail()

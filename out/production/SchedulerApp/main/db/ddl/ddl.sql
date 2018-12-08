@@ -20,6 +20,7 @@ create table appointment
   primary key (id, email),
   constraint appointment_user_fk
   foreign key (email) references user (email)
+    on update cascade
 );
 
 create table setting
@@ -31,5 +32,6 @@ create table setting
   appointmentcolor varchar(7)  null,
   constraint setting_user_fk
   foreign key (email) references user (email)
+    on update cascade
 );
 

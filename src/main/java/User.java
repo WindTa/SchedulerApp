@@ -1,5 +1,6 @@
 package main.java;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -11,17 +12,20 @@ import javafx.scene.paint.Color;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 public class User {
-    private StringProperty email;
-    private StringProperty password;
-    private StringProperty name;
-    private ObjectProperty<LocalDate> birthdate;
+    private static StringProperty email;
+    private static StringProperty password;
+    private static StringProperty name;
+    private static ObjectProperty<LocalDate> birthdate;
 
-    private StringProperty calendarMode;
-    private ObjectProperty<Color> calendarColor;
-    private ObjectProperty<Color> appointmentColor;
+    private static StringProperty calendarMode;
+    private static ObjectProperty<Color> calendarColor;
+    private static ObjectProperty<Color> appointmentColor;
+
+    private static Statement stmt;
 
     public User(ResultSet user, ResultSet setting) throws SQLException {
         this.email = new SimpleStringProperty(this, "email", user.getString("email"));
@@ -33,11 +37,39 @@ public class User {
         this.appointmentColor = new SimpleObjectProperty<>(Color.web(setting.getString("appointmentcolor")));
     }
 
-    public String getEmail() {
+    public void update(JFXTextField emailText) {
+        try {
+            stmt = Main.con.createStatement();
+            ResultSet user = stmt.executeQuery(
+                    String.format("SELECT * FROM user "
+                                + "WHERE email = '%s'", emailText.getText())
+            );
+
+            stmt = Main.con.createStatement();
+            ResultSet setting = stmt.executeQuery(
+                    String.format("SELECT * FROM setting "
+                                + "WHERE email = '%s'", emailText.getText())
+            );
+            user.next();
+            setting.next();
+
+            setEmail(user.getString("email"));
+            setPassword(user.getString("password"));
+            setName(user.getString("name"));
+            setBirthdate(user.getDate("birthdate").toLocalDate());
+            setCalendarMode(setting.getString("calendarmode"));
+            setCalendarColor(Color.web(setting.getString("calendarcolor")));
+            setAppointmentColor(Color.web(setting.getString("appointmentcolor")));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getEmail() {
         return email.get();
     }
 
-    public StringProperty emailProperty() {
+    public static StringProperty emailProperty() {
         return email;
     }
 
@@ -45,11 +77,11 @@ public class User {
         this.email.set(email);
     }
 
-    public String getPassword() {
+    public static String getPassword() {
         return password.get();
     }
 
-    public StringProperty passwordProperty() {
+    public static StringProperty passwordProperty() {
         return password;
     }
 
@@ -57,11 +89,11 @@ public class User {
         this.password.set(password);
     }
 
-    public String getName() {
+    public static String getName() {
         return name.get();
     }
 
-    public StringProperty nameProperty() {
+    public static StringProperty nameProperty() {
         return name;
     }
 
@@ -69,11 +101,11 @@ public class User {
         this.name.set(name);
     }
 
-    public LocalDate getBirthdate() {
+    public static LocalDate getBirthdate() {
         return birthdate.get();
     }
 
-    public ObjectProperty<LocalDate> birthdateProperty() {
+    public static ObjectProperty<LocalDate> birthdateProperty() {
         return birthdate;
     }
 
@@ -81,11 +113,11 @@ public class User {
         this.birthdate.set(birthdate);
     }
 
-    public String getCalendarMode() {
+    public static String getCalendarMode() {
         return calendarMode.get();
     }
 
-    public StringProperty calendarModeProperty() {
+    public static StringProperty calendarModeProperty() {
         return calendarMode;
     }
 
@@ -93,11 +125,11 @@ public class User {
         this.calendarMode.set(calendarMode);
     }
 
-    public Color getCalendarColor() {
+    public static Color getCalendarColor() {
         return calendarColor.get();
     }
 
-    public ObjectProperty<Color> calendarColorProperty() {
+    public static ObjectProperty<Color> calendarColorProperty() {
         return calendarColor;
     }
 
@@ -105,11 +137,11 @@ public class User {
         this.calendarColor.set(calendarColor);
     }
 
-    public Color getAppointmentColor() {
+    public static Color getAppointmentColor() {
         return appointmentColor.get();
     }
 
-    public ObjectProperty appointmentColorProperty() {
+    public static ObjectProperty appointmentColorProperty() {
         return appointmentColor;
     }
 

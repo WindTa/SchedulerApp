@@ -1,5 +1,8 @@
 package main.java.controllers;
 
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,45 +25,37 @@ import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SignUpController {
-    @FXML TextField emailText;
-    @FXML PasswordField passwordText;
-    @FXML TextField nameText;
-    @FXML DatePicker birthDate;
+public class SignUpController extends Validate {
+    @FXML private JFXTextField emailText;
+    @FXML private JFXPasswordField passwordText;
+    @FXML private JFXTextField nameText;
+    @FXML private DatePicker birthDate;
+    private Statement stmt;
 
-    public void signInClick(ActionEvent event) throws IOException {
+    public void signInClick(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignIn.fxml"));
-
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        Main.update(root);
     }
 
     public void signUpClick(ActionEvent event) throws IOException {
-        if (Validate.email(emailText) && Validate.password(passwordText) && Validate.general(nameText) && Validate.date(birthDate)) {
+        if (email(emailText) && password(passwordText) && general(nameText) && date(birthDate)) {
             try {
-                Statement stmt = Main.con.createStatement();
-                String query = "INSERT INTO user (email, password, name, birthdate) VALUES"
-                        + "('"
-                        + emailText.getText() + "', '"
-                        + passwordText.getText() + "', '"
-                        + nameText.getText() + "', '"
-                        + birthDate.getValue() + "')";
-                stmt.executeUpdate(query);
+                stmt = Main.con.createStatement();
 
-                query = "INSERT INTO setting (email, calendarmode, calendarcolor, appointmentcolor) VALUES"
-                        + "('"
-                        + emailText.getText() + "', '"
-                        + "Week', '"
-                        + "#FFFFFF', '"
-                        + "#0000FF')";
-                stmt.executeUpdate(query);
+                stmt.executeUpdate(
+                        String.format("INSERT INTO user (email, password, name, birthdate) VALUES"
+                                    + "('%s', '%s', '%s', '%s')", emailText.getText(), passwordText.getText(), nameText.getText(), birthDate.getValue())
+                );
+
+                stmt.executeUpdate(
+                        String.format("INSERT INTO setting (email, calendarmode, calendarcolor, appointmentcolor) VALUES"
+                                    + "('%s', 'Week', '#FFFFFF', '#0000FF')", emailText.getText())
+                );
 
                 Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/SignIn.fxml"));
-
-                Main.window.getScene().setRoot(root);
-                Main.window.show();
+                Main.update(root);
             } catch (SQLIntegrityConstraintViolationException e) {
-                Main.alert(Alert.AlertType.WARNING, "User Exists", "This email already has an account");
+                alert(Alert.AlertType.WARNING, "User Exists", "This email already has an account");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
