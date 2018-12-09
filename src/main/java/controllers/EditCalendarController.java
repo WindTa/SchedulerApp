@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import main.java.Main;
@@ -14,19 +16,32 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class EditColorController {
+public class EditCalendarController {
     @FXML ColorPicker calendarColor;
     @FXML ColorPicker appointmentColor;
     @FXML Rectangle calendarShape;
     @FXML Rectangle appointmentShape;
     @FXML Button applyButton;
+    @FXML BorderPane borderPane;
 
     @FXML
-    public void initialize() {
-        calendarShape.fillProperty().bind(Main.user.calendarColorProperty());
+    public void initialize() throws IOException {
+        
+        String mode = Main.user.getCalendarMode();
+        Pane calendar;
+        if (mode.equals("Day")) {
+            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Day.fxml"));
+        } else if (mode.equals("Week")) {
+            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Weekfxml"));
+        } else {
+            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Month.fxml"));
+        }
+        borderPane.setCenter(calendar);
+
+        /*calendarShape.fillProperty().bind(Main.user.calendarColorProperty());
         appointmentShape.fillProperty().bind(Main.user.appointmentColorProperty());
         calendarColor.setValue(Main.user.getCalendarColor());
-        appointmentColor.setValue(Main.user.getAppointmentColor());
+        appointmentColor.setValue(Main.user.getAppointmentColor());*/
     }
 
     public void homeClick(ActionEvent actionEvent) throws IOException {

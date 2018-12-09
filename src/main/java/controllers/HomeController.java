@@ -10,6 +10,8 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.Main;
@@ -19,23 +21,23 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class HomeController {
-    @FXML private ToggleGroup calendarMode;
-    @FXML private RadioMenuItem monthItem;
-    @FXML private RadioMenuItem weekItem;
-    @FXML private RadioMenuItem dayItem;
     @FXML private MenuItem importButton;
+    @FXML private BorderPane borderPane;
+
     private Statement stmt;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         String mode = Main.user.getCalendarMode();
-        if (mode.equals("Month")) {
-            calendarMode.selectToggle(monthItem);
+        Pane calendar;
+        if (mode.equals("Day")) {
+            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Day.fxml"));
         } else if (mode.equals("Week")) {
-            calendarMode.selectToggle(weekItem);
-        } else if (mode.equals("Day")){
-            calendarMode.selectToggle(dayItem);
+            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Weekfxml"));
+        } else {
+            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Month.fxml"));
         }
+        borderPane.setCenter(calendar);
     }
 
     public void importClick(ActionEvent event) throws IOException {
@@ -78,51 +80,8 @@ public class HomeController {
         Main.update(root);
     }
 
-    public void editColorClick(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/EditColor.fxml"));
+    public void editCalendarClick(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/EditCalendar.fxml"));
         Main.update(root);
-    }
-
-    public void monthItemClick(ActionEvent event) {
-        try {
-            stmt = Main.con.createStatement();
-            String query = "UPDATE setting "
-                    + " SET calendarmode = 'Month'"
-                    + " WHERE email = '" + Main.user.getEmail()
-                    + "'";
-            stmt.executeUpdate(query);
-            Main.user.setCalendarMode("Month");
-        } catch (SQLException e) {
-            e.printStackTrace();
-            Main.user.setCalendarMode("Month");
-        }
-    }
-
-    public void weekItemClick(ActionEvent event) {
-        try {
-            stmt = Main.con.createStatement();
-            String query = "UPDATE setting "
-                    + " SET calendarmode = 'Week'"
-                    + " WHERE email = '" + Main.user.getEmail()
-                    + "'";
-            stmt.executeUpdate(query);
-            Main.user.setCalendarMode("Week");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void dayItemClick(ActionEvent event) {
-        try {
-            stmt = Main.con.createStatement();
-            String query = "UPDATE setting "
-                    + " SET calendarmode = 'Day'"
-                    + " WHERE email = '" + Main.user.getEmail()
-                    + "'";
-            stmt.executeUpdate(query);
-            Main.user.setCalendarMode("Day");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

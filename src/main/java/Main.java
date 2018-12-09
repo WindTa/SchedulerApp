@@ -5,8 +5,10 @@ import javafx.beans.property.Property;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Connection;
 
 public class Main extends Application {
@@ -48,7 +50,7 @@ public class Main extends Application {
     }
 
     public static void update(Parent root){
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        window.getScene().setRoot(root);
+        window.show();
     }
 }

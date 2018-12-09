@@ -78,9 +78,9 @@ public class EditInfoController extends Validate {
                 alert(Alert.AlertType.INFORMATION, "Confirmation", "User Info has changed successfully");
 
                 if (newEmailText.getText().isEmpty()) {
-                    Main.user.update(oldEmailText);
+                    Main.user.update(oldEmailText.getText());
                 } else {
-                    Main.user.update(newEmailText);
+                    Main.user.update(newEmailText.getText());
                 }
             } catch (SQLIntegrityConstraintViolationException e) {
                 alert(Alert.AlertType.WARNING, "User Exists", "This email already has an account");

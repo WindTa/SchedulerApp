@@ -1,14 +1,324 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="main.resources.lib.Month"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<HBox xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.MonthController">
+   <children>
+      <VBox fx:id="vbox" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+         <children>
+            <HBox alignment="CENTER" maxHeight="283.0" prefHeight="40.0" prefWidth="513.0" spacing="10.0">
+               <children>
+                  <JFXButton fx:id="lastButton" onAction="#lastClick" prefHeight="25.0" prefWidth="25.0" style="-fx-border-radius: 4em; -fx-text-fill: #FFFFFF; -fx-background-radius: 4em; -fx-background-color: #CCCCCC;" text="&lt;">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="nextButton" onAction="#nextClick" prefHeight="25.0" prefWidth="25.0" style="-fx-border-radius: 4em; -fx-text-fill: #FFFFFF; -fx-background-radius: 4em; -fx-background-color: #CCCCCC;" text="&gt;">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </JFXButton>
+                  <Label fx:id="labelMonth" prefHeight="22.0" text="Month" textFill="#1a08d4">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelYear" alignment="CENTER" text="Year" textAlignment="CENTER" textFill="#919192">
+                     <font>
+                        <Font name="Calibri" size="30.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox alignment="CENTER">
+               <children>
+                  <GridPane maxHeight="1.7976931348623157E308" minHeight="30.0" HBox.hgrow="ALWAYS">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Sun" textAlignment="CENTER" textFill="#ff6262" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Franklin Gothic Medium" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Mon" textAlignment="CENTER" textFill="#706f74" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Franklin Gothic Medium" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Tue" textAlignment="CENTER" textFill="#706f74" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Franklin Gothic Medium" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" text="Wed" textAlignment="CENTER" textFill="#706f74" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Franklin Gothic Medium" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Thu" textAlignment="CENTER" textFill="#706f74" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Franklin Gothic Medium" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Fri" textAlignment="CENTER" textFill="#706f74" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Franklin Gothic Medium" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Sat" textAlignment="CENTER" textFill="#7f6ad5" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Franklin Gothic Medium" size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+            </HBox>
+            <GridPane fx:id="gridPane" style="-fx-background-color: #000000;" styleClass="gridPaneBorder" VBox.vgrow="ALWAYS">
+               <columnConstraints>
+                  <ColumnConstraints fx:id="row" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <children>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 1 1 1 0;">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 1 1 1 0;" GridPane.columnIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 1 1 1 0;" GridPane.columnIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 1 1 1 0;" GridPane.columnIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 1 1 1 0;" GridPane.columnIndex="4">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 1 1 1 0;" GridPane.columnIndex="5">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 1 1 1 0;" GridPane.columnIndex="6">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="6" GridPane.rowIndex="2">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.rowIndex="5" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #CCCCCC; -fx-border-width: 0 1 1 0;" GridPane.columnIndex="6" GridPane.rowIndex="5" />
+               </children>
+               <opaqueInsets>
+                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+               </opaqueInsets>
+            </GridPane>
+         </children>
+      </VBox>
+   </children>
+</HBox>

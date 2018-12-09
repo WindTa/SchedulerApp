@@ -37,18 +37,18 @@ public class User {
         this.appointmentColor = new SimpleObjectProperty<>(Color.web(setting.getString("appointmentcolor")));
     }
 
-    public void update(JFXTextField emailText) {
+    public void update(String email) {
         try {
             stmt = Main.con.createStatement();
             ResultSet user = stmt.executeQuery(
                     String.format("SELECT * FROM user "
-                                + "WHERE email = '%s'", emailText.getText())
+                                + "WHERE email = '%s'", email)
             );
 
             stmt = Main.con.createStatement();
             ResultSet setting = stmt.executeQuery(
                     String.format("SELECT * FROM setting "
-                                + "WHERE email = '%s'", emailText.getText())
+                                + "WHERE email = '%s'", email)
             );
             user.next();
             setting.next();

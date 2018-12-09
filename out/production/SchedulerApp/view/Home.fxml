@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.BorderPane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.HomeController">
+<BorderPane fx:id="borderPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.controllers.HomeController">
    <top>
       <MenuBar fx:id="menuBar" BorderPane.alignment="CENTER">
         <menus>
@@ -33,18 +33,7 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Settings">
                <items>
-                  <Menu fx:id="modeMenu" mnemonicParsing="false" text="Mode">
-                     <items>
-                        <RadioMenuItem fx:id="monthItem" mnemonicParsing="false" onAction="#monthItemClick" text="Month">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="calendarMode" />
-                           </toggleGroup>
-                        </RadioMenuItem>
-                        <RadioMenuItem fx:id="weekItem" mnemonicParsing="false" onAction="#weekItemClick" text="Week" toggleGroup="$calendarMode" />
-                        <RadioMenuItem fx:id="dayItem" mnemonicParsing="false" onAction="#dayItemClick" text="Day" toggleGroup="$calendarMode" />
-                     </items>
-                  </Menu>
-                  <MenuItem fx:id="changeColorButton" mnemonicParsing="false" onAction="#editColorClick" text="Change Color..." />
+                  <MenuItem fx:id="editCalendarButton" mnemonicParsing="false" onAction="#editCalendarClick" text="Change..." />
                </items>
             </Menu>
         </menus>
