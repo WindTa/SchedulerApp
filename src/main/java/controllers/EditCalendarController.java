@@ -1,13 +1,16 @@
 package main.java.controllers;
 
+import com.jfoenix.controls.JFXRadioButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.ColorPicker;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import main.java.Main;
@@ -17,75 +20,125 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class EditCalendarController {
-    @FXML ColorPicker calendarColor;
-    @FXML ColorPicker appointmentColor;
-    @FXML Rectangle calendarShape;
-    @FXML Rectangle appointmentShape;
-    @FXML Button applyButton;
-    @FXML BorderPane borderPane;
+    @FXML private ColorPicker calendarColor;
+    @FXML private ColorPicker appointmentColor;
+    @FXML private BorderPane borderPane;
+    @FXML private ToggleGroup modeGroup;
+    @FXML private ToggleGroup stateGroup;
+    @FXML private JFXRadioButton dayButton;
+    @FXML private JFXRadioButton weekButton;
+    @FXML private JFXRadioButton monthButton;
+    @FXML private JFXRadioButton beforeButton;
+
+    private Statement stmt;
 
     @FXML
-    public void initialize() throws IOException {
-
+    public void initialize() {
         String mode = Main.user.getCalendarMode();
-        Pane calendar;
+        stateGroup.selectToggle(beforeButton);
         if (mode.equals("Day")) {
-            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Day.fxml"));
+            modeGroup.selectToggle(dayButton);
         } else if (mode.equals("Week")) {
-            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Weekfxml"));
+            modeGroup.selectToggle(weekButton);
         } else {
-            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Month.fxml"));
+            modeGroup.selectToggle(monthButton);
         }
-        borderPane.setCenter(calendar);
 
-        /*calendarShape.fillProperty().bind(Main.user.calendarColorProperty());
-        appointmentShape.fillProperty().bind(Main.user.appointmentColorProperty());
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
+
         calendarColor.setValue(Main.user.getCalendarColor());
-        appointmentColor.setValue(Main.user.getAppointmentColor());*/
+        appointmentColor.setValue(Main.user.getAppointmentColor());
+    }
+
+    public void createDemo(String state, String mode) {
+        GridPane gridPane = new GridPane();
+
+        int row = 1, column = 2;
+
+        if (mode.equals("Week")) {
+            row = 1;
+            column = 7;
+        } else if (mode.equals("Month")) {
+            row = 6;
+            column = 7;
+        }
+
+        Color calColor = Main.user.getCalendarColor();
+        Color appColor = Main.user.getAppointmentColor();
+
+        if (state.equals("After")) {
+            calColor = calendarColor.getValue();
+            appColor = appointmentColor.getValue();
+        }
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                AnchorPaneNode anchorPane = new AnchorPaneNode();
+                anchorPane.setPrefSize(50,50);
+                anchorPane.setPadding(new Insets(10));
+                if (i == (row - 1) && j == (column - 1)) {
+                    anchorPane.setStyle("-fx-background-color: #" + appColor.toString().substring(2, 8) + ";"
+                            + "-fx-border-color: black");
+                } else {
+                    anchorPane.setStyle("-fx-background-color: #" + calColor.toString().substring(2, 8) + ";"
+                            + "-fx-border-color: black");
+                }
+                gridPane.add(anchorPane, j, i);
+                gridPane.setHgrow(anchorPane, Priority.ALWAYS);
+                gridPane.setVgrow(anchorPane, Priority.ALWAYS);
+            }
+        }
+        borderPane.setCenter(gridPane);
     }
 
     public void homeClick(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
-
-        Main.window.getScene().setRoot(root);
-        Main.window.show();
+        Main.update(root);
     }
 
     public void beforeClick(ActionEvent actionEvent) {
-        calendarShape.fillProperty().unbind();
-        appointmentShape.fillProperty().unbind();
-        calendarShape.fillProperty().bind(Main.user.calendarColorProperty());
-        appointmentShape.fillProperty().bind(Main.user.appointmentColorProperty());
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
     }
 
     public void afterClick(ActionEvent actionEvent) {
-        calendarShape.fillProperty().unbind();
-        appointmentShape.fillProperty().unbind();
-        calendarShape.fillProperty().bind(calendarColor.valueProperty());
-        appointmentShape.fillProperty().bind(appointmentColor.valueProperty());
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
+    }
+
+    public void calendarClick(ActionEvent actionEvent) {
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
+    }
+
+    public void appointmentClick(ActionEvent actionEvent) {
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
+    }
+
+    public void dayClick(ActionEvent actionEvent) {
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
+    }
+
+    public void weekClick(ActionEvent actionEvent) {
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
+    }
+
+    public void monthClick(ActionEvent actionEvent) {
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
     }
 
     public void applyClick(ActionEvent actionEvent) {
         try {
-            Statement stmt = Main.con.createStatement();
-            String query = "UPDATE setting "
-                    + " SET calendarColor = '" + color(calendarColor.getValue()) + "', "
-                    + " appointmentColor = '" + color(appointmentColor.getValue())
-                    + " ' WHERE email = '" + Main.user.getEmail()
-                    + "'";
-            stmt.executeUpdate(query);
+            stmt = Main.con.createStatement();
+            stmt.executeUpdate(
+                    String.format("UPDATE setting "
+                                + "SET calendarMode = '%s', calendarColor = '%s', appointmentColor = '%s' "
+                                + "WHERE email = '%s'",
+                                ((RadioButton) modeGroup.getSelectedToggle()).getText(), color(calendarColor.getValue()), color(appointmentColor.getValue()), Main.user.getEmail())
+            );
 
-            Main.user.setCalendarColor(calendarColor.getValue());
-            Main.user.setAppointmentColor(appointmentColor.getValue());
+            Main.user.update(Main.user.getEmail());
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public void editClick(ActionEvent event) {
-        calendarColor.setDisable(!calendarColor.isDisabled());
-        appointmentColor.setDisable(!appointmentColor.isDisabled());
-        applyButton.setDisable(!applyButton.isDisabled());
+        createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
     }
 
     public String color(Color color) {

@@ -17,7 +17,7 @@
    <children>
       <VBox fx:id="vbox" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER_LEFT" maxHeight="283.0" prefHeight="40.0" prefWidth="513.0" spacing="10.0">
+            <HBox fx:id="hbox" alignment="CENTER_LEFT" maxHeight="283.0" prefHeight="40.0" prefWidth="513.0" spacing="10.0">
                <children>
                   <JFXButton fx:id="lastButton" onAction="#lastClick" prefHeight="25.0" prefWidth="25.0" style="-fx-border-radius: 4em; -fx-text-fill: #FFFFFF; -fx-background-radius: 4em; -fx-background-color: #CCCCCC;" text="&lt;">
                      <font>

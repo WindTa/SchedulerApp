@@ -33,7 +33,7 @@ public class HomeController {
         if (mode.equals("Day")) {
             calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Day.fxml"));
         } else if (mode.equals("Week")) {
-            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Weekfxml"));
+            calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Week.fxml"));
         } else {
             calendar = FXMLLoader.load(getClass().getResource("/main/resources/view/Month.fxml"));
         }

@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import main.java.Main;
@@ -27,12 +28,14 @@ public class WeekController implements Initializable {
     @FXML private Label labelMonth;
     @FXML private Label labelYear;
     @FXML private GridPane gridPane;
+    @FXML private HBox hbox;
 
     private ArrayList<AnchorPaneNode> dateList = new ArrayList<>();
     private LocalDate date = LocalDate.now();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        hbox.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8));
         labelMonth.setText(String.valueOf(date.getMonth()));
         labelYear.setText(String.valueOf(date.getYear()));
 
@@ -43,7 +46,8 @@ public class WeekController implements Initializable {
                 AnchorPaneNode anchorPane = new AnchorPaneNode();
                 anchorPane.setPrefSize(200,200);
                 anchorPane.setPadding(new Insets(10));
-                anchorPane.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8));
+                anchorPane.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8) + ";"
+                        + "-fx-border-color: black");
                 JFXRippler rippler = new JFXRippler(anchorPane);
                 rippler.setRipplerFill(Paint.valueOf("#CCCCCC"));
                 gridPane.add(rippler, j, i);
