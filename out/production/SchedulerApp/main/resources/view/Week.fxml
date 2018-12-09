@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -18,7 +17,7 @@
     <children>
         <VBox fx:id="vbox" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
             <children>
-                <HBox alignment="CENTER" maxHeight="283.0" prefHeight="40.0" prefWidth="513.0" spacing="10.0">
+                <HBox alignment="CENTER_LEFT" maxHeight="283.0" prefHeight="40.0" prefWidth="513.0" spacing="10.0">
                     <children>
                         <JFXButton fx:id="lastButton" onAction="#lastClick" prefHeight="25.0" prefWidth="25.0" style="-fx-border-radius: 4em; -fx-text-fill: #FFFFFF; -fx-background-radius: 4em; -fx-background-color: #CCCCCC;" text="&lt;">
                             <font>
@@ -46,7 +45,6 @@
                                 <Font name="Calibri" size="30.0" />
                             </font>
                         </Label>
-                        <Region HBox.hgrow="ALWAYS" />
                     </children>
                     <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

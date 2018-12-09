@@ -26,7 +26,7 @@ public class EditCalendarController {
 
     @FXML
     public void initialize() throws IOException {
-        
+
         String mode = Main.user.getCalendarMode();
         Pane calendar;
         if (mode.equals("Day")) {

@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import main.java.Main;
 
 import java.net.URL;
 
@@ -42,7 +43,7 @@ public class MonthController implements Initializable {
                 AnchorPaneNode anchorPane = new AnchorPaneNode();
                 anchorPane.setPrefSize(200,200);
                 anchorPane.setPadding(new Insets(10));
-
+                anchorPane.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8));
                 JFXRippler rippler = new JFXRippler(anchorPane);
                 rippler.setRipplerFill(Paint.valueOf("#CCCCCC"));
                 gridPane.add(rippler, j, i);
