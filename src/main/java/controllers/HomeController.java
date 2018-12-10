@@ -53,7 +53,7 @@ public class HomeController {
             stmt = Main.con.createStatement();
             ResultSet appointments = stmt.executeQuery(
                     String.format("SELECT * FROM appointment "
-                                + " WHERE email = '%s'", Main.user.getEmail())
+                                + " WHERE email = '%s' GROUP BY appdate, apptime, category, event, description", Main.user.getEmail())
             );
 
             CSVWriter csvWriter = new CSVWriter(new FileWriter(Main.user.getEmail() + ".csv"));

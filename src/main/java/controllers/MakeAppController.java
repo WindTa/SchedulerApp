@@ -37,16 +37,12 @@ public class MakeAppController extends Validate {
         try {
             stmt = Main.con.createStatement();
             ResultSet categories = stmt.executeQuery(
-                    String.format("SELECT DISTINCT category FROM appointment "
-                                + "WHERE email = '%s'", Main.user.getEmail())
+                    String.format("SELECT category FROM appointment "
+                                + "WHERE email = '%s' GROUP BY category", Main.user.getEmail())
             );
 
-            if (categories.next()) {
+            while (categories.next()) {
                 categoryBox.getItems().add(categories.getString("category"));
-                categoryBox.getSelectionModel().select(0);
-                while(categories.next()) {
-                    categoryBox.getItems().add(categories.getString("category"));
-                }
             }
 
         } catch (SQLException e) {

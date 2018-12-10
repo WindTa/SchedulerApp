@@ -29,15 +29,15 @@
       <Separator prefWidth="200.0" />
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox prefHeight="200.0" prefWidth="200.0" spacing="10.0">
+            <VBox fx:id="searchEndDate" prefHeight="200.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <DatePicker editable="false" maxWidth="200.0" promptText="Start Date" />
-                  <DatePicker editable="false" maxWidth="200.0" promptText="End Date" />
-                  <JFXTextField promptText="Start Time HH:MM AM/PM" />
-                  <JFXTextField promptText="End Time HH:MM AM/PM" />
-                  <JFXComboBox editable="true" prefHeight="25.0" prefWidth="200.0" promptText="Category" />
-                  <JFXTextField maxHeight="25.0" maxWidth="200.0" opacity="0.37" prefHeight="25.0" prefWidth="200.0" promptText="Keywords" VBox.vgrow="NEVER" />
-                  <Button maxHeight="25.0" maxWidth="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Search" />
+                  <DatePicker fx:id="searchStartDate" editable="false" maxWidth="200.0" promptText="Start Date" />
+                  <DatePicker fx:id="searchEn" editable="false" maxWidth="200.0" promptText="End Date" />
+                  <JFXTextField fx:id="searchStartTime" promptText="Start Time HH:MM AM/PM" />
+                  <JFXTextField fx:id="searchEndTime" promptText="End Time HH:MM AM/PM" />
+                  <JFXComboBox fx:id="searchBox" editable="true" prefHeight="25.0" prefWidth="200.0" promptText="Category" />
+                  <JFXTextField fx:id="searchText" maxHeight="25.0" maxWidth="200.0" opacity="0.37" prefHeight="25.0" prefWidth="200.0" promptText="Keywords" VBox.vgrow="NEVER" />
+                  <Button fx:id="searchButton" maxHeight="25.0" maxWidth="200.0" mnemonicParsing="false" onAction="#searchClick" prefHeight="25.0" prefWidth="200.0" text="Search" />
                </children>
                <padding>
                   <Insets bottom="10.0" top="10.0" />
@@ -46,7 +46,7 @@
             <Separator orientation="VERTICAL" prefHeight="200.0" />
             <VBox alignment="TOP_RIGHT" disable="true" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
-                  <JFXListView VBox.vgrow="ALWAYS" />
+                  <JFXListView fx:id="searchResult" VBox.vgrow="ALWAYS" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Cancel" />
                </children>
             </VBox>

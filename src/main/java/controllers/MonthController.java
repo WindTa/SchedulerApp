@@ -33,6 +33,7 @@ public class MonthController implements Initializable {
     private ArrayList<AnchorPaneNode> dateList = new ArrayList<>();
     private LocalDate date = LocalDate.now();
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hbox.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8));
@@ -72,6 +73,7 @@ public class MonthController implements Initializable {
         }
         // Populate the calendar with day numbers
         for (AnchorPaneNode anchorPane : dateList) {
+            System.out.println(calendarDate);
             if (anchorPane.getChildren().size() != 0) {
                 anchorPane.getChildren().clear(); //remove the label in AnchorPane
             }
