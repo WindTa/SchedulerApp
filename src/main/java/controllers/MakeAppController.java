@@ -58,7 +58,7 @@ public class MakeAppController extends Validate {
     public void addClick(ActionEvent actionEvent) throws IOException {
         if (date(datePicker) && time(startTime) && category(categoryBox) && title(titleText) && description(descriptionText)) {
             try {
-                DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
+                DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
 
                 stmt = Main.con.createStatement();
 

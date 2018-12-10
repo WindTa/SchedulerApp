@@ -3,6 +3,10 @@ package main.java;
 import com.jfoenix.controls.*;
 import javafx.scene.control.*;
 
+import java.sql.Time;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -64,6 +68,23 @@ public class Validate {
             alert(Alert.AlertType.WARNING, "Validate Date", "Date must not be empty");
             return false;
         }
+    }
+
+    public static boolean searchDateValid(DatePicker date1, DatePicker date2) {
+        if (date1.getValue().isBefore(date2.getValue())) {
+            return true;
+        }
+        alert(Alert.AlertType.WARNING, "Invalid Range", "Please enter valid date range");
+        return false;
+    }
+
+    public static boolean searchTimeValid(JFXTextField time1, JFXTextField time2) {
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
+        if (LocalTime.parse(time1.getText(), inputFormatter).isBefore(LocalTime.parse(time2.getText(), inputFormatter))) {
+            return true;
+        }
+        alert(Alert.AlertType.WARNING, "Invalid Range", "Please enter valid time range");
+        return false;
     }
 
     public static boolean time(JFXTextField time) {

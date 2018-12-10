@@ -45,13 +45,13 @@
                      </children>
                   </VBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
-                  <VBox disable="true" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="vbox" disable="true" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <DatePicker editable="false" maxWidth="200.0" promptText="New Date" />
-                        <JFXTextField maxWidth="200.0" promptText="New Start Time HH:MM AM/PM" />
-                        <JFXComboBox fx:id="categoryBox" editable="true" prefHeight="25.0" prefWidth="200.0" promptText="New Category" />
-                        <JFXTextField promptText="New Title" />
-                        <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="New Description" VBox.vgrow="ALWAYS" />
+                        <DatePicker fx:id="newDate" editable="false" maxWidth="200.0" promptText="New Date" />
+                        <JFXTextField fx:id="newTime" maxWidth="200.0" promptText="New Time HH:MM AM/PM" />
+                        <JFXComboBox fx:id="newCategory" editable="true" prefHeight="25.0" prefWidth="200.0" promptText="New Category" />
+                        <JFXTextField fx:id="newTitle" promptText="New Title" />
+                        <TextArea fx:id="newDescription" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="New Description" VBox.vgrow="ALWAYS" />
                         <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="200.0" VBox.vgrow="NEVER">
                            <children>
                               <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Apply" />
