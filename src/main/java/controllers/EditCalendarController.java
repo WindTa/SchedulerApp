@@ -137,7 +137,7 @@ public class EditCalendarController {
         createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
     }
 
-    public void applyClick(ActionEvent actionEvent) {
+    public void applyClick(ActionEvent actionEvent) throws IOException {
         try {
             stmt = Main.con.createStatement();
             stmt.executeUpdate(
@@ -152,6 +152,9 @@ public class EditCalendarController {
             e.printStackTrace();
         }
         createDemo(((RadioButton) stateGroup.getSelectedToggle()).getText(), ((RadioButton) modeGroup.getSelectedToggle()).getText());
+
+        Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
+        Main.update(root);
     }
 
     public String color(Color color) {

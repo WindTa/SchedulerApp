@@ -10,9 +10,11 @@ import javafx.scene.control.Label;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import main.java.Main;
 
 import java.net.URL;
@@ -20,8 +22,12 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 
+import java.time.LocalTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
@@ -82,14 +88,24 @@ public class WeekController implements Initializable {
         return y >= 128 ? Color.color(0, 0, 0) : Color.color(1, 1, 1);
     }
 
+    public static String convertTime(String time) {
+        DateTimeFormatter fmt_24 = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter fmt_12 = DateTimeFormatter.ofPattern("hh:mm a");
+        LocalTime t = LocalTime.parse(time, fmt_24);
+        return fmt_12.format(t);
+    }
+
     /**Method that populate the date of moth in GridPane**/
     private void populateDate(YearMonth yearMonthNow){
         YearMonth yearMonth = yearMonthNow;
         // Get the date we want to start with on the calendar
-        LocalDate calendarDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), date.getDayOfMonth());
+        LocalDate calendarDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), date.getDayOfMonth() - 1);
 
         // Populate the calendar with day numbers
         for (AnchorPaneNode anchorPane : dateList) {
+            VBox vbox = new VBox();
+            vbox.setPadding(new Insets(15));
+            vbox.setSpacing(10);
             if (anchorPane.getChildren().size() != 0) {
                 anchorPane.getChildren().clear(); //remove the label in AnchorPane
             }
@@ -109,7 +125,8 @@ public class WeekController implements Initializable {
 
             anchorPane.setTopAnchor(label, 5.0);
             anchorPane.setLeftAnchor(label, 5.0);
-            anchorPane.getChildren().add(label);
+            anchorPane.getChildren().add(vbox);
+            vbox.getChildren().add(label);
             anchorPane.getStyleClass().remove("selectedDate"); //remove selection on date change
             anchorPane.getStyleClass().remove("dateNow"); //remove selection on current date
             if(anchorPane.getDate().equals(LocalDate.now())){ //if date is equal to current date now, then add a defualt color to pane
@@ -154,6 +171,34 @@ public class WeekController implements Initializable {
                     );
                 }
 
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                stmt = Main.con.createStatement();
+                ResultSet appointments = stmt.executeQuery(
+                        String.format(
+                                "SELECT apptime, category, event FROM appointment "
+                                        + "WHERE email = '%s' AND appdate = '%s'"
+                                , Main.user.getEmail(), calendarDate
+                        )
+                );
+
+                while(appointments.next()) {
+                    Text appointment = new Text(
+                            String.format("%s \n"
+                                        + "\tCategory:\t %s \n"
+                                        + "\tEvent:\t %s"
+                                        , convertTime(appointments.getString("apptime"))
+                                        , appointments.getString("category")
+                                        , appointments.getString("event")
+                            )
+                    );
+                    Color font = getContrastColor(Main.user.getAppointmentColor());
+                    appointment.setFill(font);
+                    vbox.getChildren().add(appointment);
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
