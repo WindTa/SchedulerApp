@@ -14,6 +14,7 @@ import main.java.Main;
 import main.java.Validate;
 
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
@@ -33,7 +34,24 @@ public class MakeAppController extends Validate {
 
     @FXML
     public void initialize() {
+        try {
+            stmt = Main.con.createStatement();
+            ResultSet categories = stmt.executeQuery(
+                    String.format("SELECT DISTINCT category FROM appointment "
+                                + "WHERE email = '%s'", Main.user.getEmail())
+            );
 
+            if (categories.next()) {
+                categoryBox.getItems().add(categories.getString("category"));
+                categoryBox.getSelectionModel().select(0);
+                while(categories.next()) {
+                    categoryBox.getItems().add(categories.getString("category"));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void homeClick(ActionEvent actionEvent) throws IOException {
@@ -56,8 +74,6 @@ public class MakeAppController extends Validate {
                 );
 
                 alert(Alert.AlertType.INFORMATION, "Success", "Appointment was successfully created");
-
-                Main.user.update(Main.user.getEmail());
 
                 Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
                 Main.update(root);

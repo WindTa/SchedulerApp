@@ -46,19 +46,6 @@ public class SignInController  extends Validate{
                         String.format("SELECT * FROM setting "
                                     + "WHERE email = '%s'", emailText.getText())
                 );
-                /*
-                String query = "SELECT * FROM user WHERE email ='"
-                        + emailText.getText() + "' and BINARY password ='"
-                        + passwordText.getText() + "'";
-                ResultSet user = stmt.executeQuery(query);
-                */
-
-                /*
-                stmt = Main.con.createStatement();
-                query = "SELECT * FROM setting WHERE email = '"
-                        + emailText.getText() + "'";
-                ResultSet setting = stmt.executeQuery(query);
-                */
 
                 if (user.next()) {
                     setting.next();
