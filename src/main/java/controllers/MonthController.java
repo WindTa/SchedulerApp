@@ -16,6 +16,9 @@ import main.java.Main;
 
 import java.net.URL;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 import java.time.YearMonth;
@@ -33,6 +36,7 @@ public class MonthController implements Initializable {
     private ArrayList<AnchorPaneNode> dateList = new ArrayList<>();
     private LocalDate date = LocalDate.now();
 
+    private Statement stmt;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,8 +51,6 @@ public class MonthController implements Initializable {
                 AnchorPaneNode anchorPane = new AnchorPaneNode();
                 anchorPane.setPrefSize(200,200);
                 anchorPane.setPadding(new Insets(10));
-                anchorPane.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8) + ";"
-                                    + "-fx-border-color: black");
                 JFXRippler rippler = new JFXRippler(anchorPane);
                 rippler.setRipplerFill(Paint.valueOf("#CCCCCC"));
                 rippler.setStyle("-fx-border-color: #000000");
@@ -63,7 +65,7 @@ public class MonthController implements Initializable {
     }
 
     /**Method that populate the date of moth in GridPane**/
-    private void populateDate(YearMonth yearMonthNow){
+    private void populateDate(YearMonth yearMonthNow) {
         YearMonth yearMonth = yearMonthNow;
         // Get the date we want to start with on the calendar
         LocalDate calendarDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), 1);
@@ -73,7 +75,28 @@ public class MonthController implements Initializable {
         }
         // Populate the calendar with day numbers
         for (AnchorPaneNode anchorPane : dateList) {
-            System.out.println(calendarDate);
+            try {
+                stmt = Main.con.createStatement();
+                ResultSet date = stmt.executeQuery(
+                        String.format(
+                                "SELECT DISTINCT appdate FROM appointment "
+                                        + "WHERE email = '%s' AND appdate = '%s'"
+                                        , Main.user.getEmail(), calendarDate
+                                )
+                );
+
+                if (date.next()) {
+                    anchorPane.setStyle("-fx-background-color: #" + Main.user.getAppointmentColor().toString().substring(2, 8) + ";"
+                            + "-fx-border-color: black");
+                } else {
+                    anchorPane.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8) + ";"
+                            + "-fx-border-color: black");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
             if (anchorPane.getChildren().size() != 0) {
                 anchorPane.getChildren().clear(); //remove the label in AnchorPane
             }

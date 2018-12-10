@@ -17,6 +17,9 @@ import main.java.Main;
 
 import java.net.URL;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 
 import java.time.YearMonth;
@@ -35,6 +38,7 @@ public class DayController implements Initializable {
 
     private ArrayList<AnchorPaneNode> dateList = new ArrayList<>();
     private LocalDate date = LocalDate.now();
+    private Statement stmt;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,6 +84,28 @@ public class DayController implements Initializable {
 
         // Populate the calendar with day numbers
         for (AnchorPaneNode anchorPane : dateList) {
+            try {
+                stmt = Main.con.createStatement();
+                ResultSet date = stmt.executeQuery(
+                        String.format(
+                                "SELECT DISTINCT appdate FROM appointment "
+                                        + "WHERE email = '%s' AND appdate = '%s'"
+                                , Main.user.getEmail(), calendarDate
+                        )
+                );
+
+                if (date.next()) {
+                    anchorPane.setStyle("-fx-background-color: #" + Main.user.getAppointmentColor().toString().substring(2, 8) + ";"
+                            + "-fx-border-color: black");
+                } else {
+                    anchorPane.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8) + ";"
+                            + "-fx-border-color: black");
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
             if (anchorPane.getChildren().size() != 0) {
                 anchorPane.getChildren().clear(); //remove the label in AnchorPane
             }
