@@ -38,7 +38,7 @@ public class SignUpController extends Validate {
     }
 
     public void signUpClick(ActionEvent event) throws IOException {
-        if (email(emailText) && password(passwordText) && general(nameText) && date(birthDate)) {
+        if (email(emailText) && password(passwordText) && name(nameText) && date(birthDate)) {
             try {
                 stmt = Main.con.createStatement();
 

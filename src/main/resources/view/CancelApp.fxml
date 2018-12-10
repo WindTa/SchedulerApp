@@ -31,11 +31,11 @@
          <children>
             <VBox prefHeight="200.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <DatePicker maxWidth="200.0" promptText="Start Date" />
-                  <DatePicker maxWidth="200.0" promptText="End Date" />
+                  <DatePicker editable="false" maxWidth="200.0" promptText="Start Date" />
+                  <DatePicker editable="false" maxWidth="200.0" promptText="End Date" />
                   <JFXTextField promptText="Start Time HH:MM AM/PM" />
                   <JFXTextField promptText="End Time HH:MM AM/PM" />
-                  <JFXComboBox prefHeight="25.0" prefWidth="200.0" promptText="Category" />
+                  <JFXComboBox editable="true" prefHeight="25.0" prefWidth="200.0" promptText="Category" />
                   <JFXTextField maxHeight="25.0" maxWidth="200.0" opacity="0.37" prefHeight="25.0" prefWidth="200.0" promptText="Keywords" VBox.vgrow="NEVER" />
                   <Button maxHeight="25.0" maxWidth="200.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Search" />
                </children>
@@ -44,7 +44,7 @@
                </padding>
             </VBox>
             <Separator orientation="VERTICAL" prefHeight="200.0" />
-            <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_RIGHT" disable="true" prefHeight="200.0" prefWidth="100.0" spacing="10.0" HBox.hgrow="ALWAYS">
                <children>
                   <JFXListView VBox.vgrow="ALWAYS" />
                   <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Cancel" />

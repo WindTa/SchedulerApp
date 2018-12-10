@@ -1,13 +1,9 @@
 package main.java;
 
-import com.jfoenix.controls.JFXTextField;
-import javafx.beans.InvalidationListener;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.scene.paint.Color;
 
 import java.sql.ResultSet;
@@ -28,13 +24,13 @@ public class User {
     private static Statement stmt;
 
     public User(ResultSet user, ResultSet setting) throws SQLException {
-        this.email = new SimpleStringProperty(this, "email", user.getString("email"));
-        this.password = new SimpleStringProperty(this, "password", user.getString("password"));
-        this.name = new SimpleStringProperty(this, "name", user.getString("name"));
-        this.birthdate = new SimpleObjectProperty<>(user.getDate("birthdate").toLocalDate());
-        this.calendarMode = new SimpleStringProperty(this, "calendarmode", setting.getString("calendarmode"));
-        this.calendarColor = new SimpleObjectProperty<>(Color.web(setting.getString("calendarcolor")));
-        this.appointmentColor = new SimpleObjectProperty<>(Color.web(setting.getString("appointmentcolor")));
+        email = new SimpleStringProperty(this, "email", user.getString("email"));
+        password = new SimpleStringProperty(this, "password", user.getString("password"));
+        name = new SimpleStringProperty(this, "name", user.getString("name"));
+        birthdate = new SimpleObjectProperty<>(user.getDate("birthdate").toLocalDate());
+        calendarMode = new SimpleStringProperty(this, "calendarmode", setting.getString("calendarmode"));
+        calendarColor = new SimpleObjectProperty<>(Color.web(setting.getString("calendarcolor")));
+        appointmentColor = new SimpleObjectProperty<>(Color.web(setting.getString("appointmentcolor")));
     }
 
     public void update(String email) {
@@ -50,6 +46,7 @@ public class User {
                     String.format("SELECT * FROM setting "
                                 + "WHERE email = '%s'", email)
             );
+
             user.next();
             setting.next();
 
@@ -148,4 +145,5 @@ public class User {
     public void setAppointmentColor(Color appointmentColor) {
         this.appointmentColor.set(appointmentColor);
     }
+
 }

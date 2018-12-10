@@ -1,24 +1,26 @@
 package main.java.controllers;
 
+import com.opencsv.CSVWriter;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.RadioMenuItem;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import main.java.Main;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import static main.java.Validate.alert;
 
 public class HomeController {
     @FXML private MenuItem importButton;
@@ -47,7 +49,22 @@ public class HomeController {
     }
 
     public void exportClick(ActionEvent event) throws IOException {
+        try {
+            stmt = Main.con.createStatement();
+            ResultSet appointments = stmt.executeQuery(
+                    String.format("SELECT * FROM appointment "
+                                + " WHERE email = '%s'", Main.user.getEmail())
+            );
 
+            CSVWriter csvWriter = new CSVWriter(new FileWriter(Main.user.getEmail() + ".csv"));
+            csvWriter.writeAll(appointments, true);
+            csvWriter.close();
+            alert(Alert.AlertType.INFORMATION, "Success", "Appointments succesfully exported");
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void logoutClick(ActionEvent event) throws IOException {

@@ -9,18 +9,16 @@ create table user
 
 create table appointment
 (
-  id          int auto_increment,
   email       varchar(50) not null,
-  date        date        null,
-  startTime   time        null,
-  endTime     time        null,
+  appdate     date        not null,
+  apptime     time        not null,
   category    varchar(50) null,
   event       varchar(50) null,
   description text        null,
-  primary key (id, email),
+  primary key (email, appdate, apptime),
   constraint appointment_user_fk
-  foreign key (email) references user (email)
-    on update cascade
+    foreign key (email) references user (email)
+      on update cascade
 );
 
 create table setting
@@ -31,7 +29,7 @@ create table setting
   calendarcolor    varchar(7)  null,
   appointmentcolor varchar(7)  null,
   constraint setting_user_fk
-  foreign key (email) references user (email)
-    on update cascade
+    foreign key (email) references user (email)
+      on update cascade
 );
 

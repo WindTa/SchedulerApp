@@ -1,12 +1,7 @@
 package main.java;
 
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import com.jfoenix.controls.*;
+import javafx.scene.control.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,7 +30,7 @@ public class Validate {
         }
     }
 
-    public static boolean general(JFXTextField generalText) {
+    public static boolean name(JFXTextField generalText) {
         if (!generalText.getText().isEmpty()) {
             return true;
         } else {
@@ -44,11 +39,49 @@ public class Validate {
         }
     }
 
+    public static boolean title(JFXTextField generalText) {
+        if (!generalText.getText().isEmpty()) {
+            return true;
+        } else {
+            alert(Alert.AlertType.WARNING, "Validate Title", "Title must not be empty");
+            return false;
+        }
+    }
+
+    public static boolean description(TextArea generalText) {
+        if (!generalText.getText().isEmpty()) {
+            return true;
+        } else {
+            alert(Alert.AlertType.WARNING, "Validate Description", "Description must not be empty");
+            return false;
+        }
+    }
+
     public static boolean date(DatePicker datePicker) {
         if (datePicker.getValue() != null) {
             return true;
         } else {
-            alert(Alert.AlertType.WARNING, "Validate Birth Date", "Birth date must not be empty");
+            alert(Alert.AlertType.WARNING, "Validate Date", "Date must not be empty");
+            return false;
+        }
+    }
+
+    public static boolean time(JFXTextField time) {
+        Pattern p = Pattern.compile("(1[0-2]|0?[1-9]):([0-5][0-9]) ([AaPp][Mm])");
+        Matcher m = p.matcher(time.getText());
+        if (m.find() && m.group().equals(time.getText())) {
+            return true;
+        } else {
+            alert(Alert.AlertType.WARNING, "Validate Time", "Please enter valid time");
+            return false;
+        }
+    }
+
+    public static boolean category(JFXComboBox categoryBox) {
+        if (categoryBox.getValue() != null) {
+            return true;
+        } else {
+            alert(Alert.AlertType.WARNING, "Validate Category", "Category must not be empty");
             return false;
         }
     }

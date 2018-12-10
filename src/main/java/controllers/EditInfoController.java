@@ -44,7 +44,7 @@ public class EditInfoController extends Validate {
         Main.update(root);
     }
 
-    public void applyClick(ActionEvent event) {
+    public void applyClick(ActionEvent event) throws IOException {
         boolean editable = true;
         String query = "UPDATE user SET ";
 
@@ -82,6 +82,9 @@ public class EditInfoController extends Validate {
                 } else {
                     Main.user.update(newEmailText.getText());
                 }
+
+                Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
+                Main.update(root);
             } catch (SQLIntegrityConstraintViolationException e) {
                 alert(Alert.AlertType.WARNING, "User Exists", "This email already has an account");
             } catch (SQLException e) {

@@ -15,7 +15,7 @@
             <JFXTextField fx:id="emailText" promptText="Email" />
             <JFXPasswordField fx:id="passwordText" promptText="Password" />
             <JFXTextField fx:id="nameText" promptText="Name" />
-            <DatePicker fx:id="birthDate" prefHeight="25.0" prefWidth="244.0" promptText="Birth Date" />
+            <DatePicker fx:id="birthDate" editable="false" prefHeight="25.0" prefWidth="244.0" promptText="Birth Date" />
             <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpClick" prefHeight="25.0" prefWidth="237.0" text="Create Account" />
             <Button fx:id="signInButton" mnemonicParsing="false" onAction="#signInClick" prefHeight="25.0" prefWidth="207.0" text="Already have an account?" />
          </children>

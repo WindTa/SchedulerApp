@@ -29,15 +29,14 @@
       <Separator prefWidth="200.0" />
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <DatePicker prefHeight="25.0" prefWidth="200.0" promptText="Date" />
-            <JFXTextField maxWidth="200.0" prefWidth="200.0" promptText="Start Time HH:MM AM/PM" />
-            <JFXTextField maxWidth="200.0" prefWidth="200.0" promptText="End TIme HH:MM AM/PM" />
-            <JFXComboBox editable="true" prefHeight="25.0" prefWidth="200.0" promptText="Category" />
-            <JFXTextField promptText="Title" />
-            <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Description" VBox.vgrow="ALWAYS" />
+            <DatePicker fx:id="datePicker" editable="false" prefHeight="25.0" prefWidth="200.0" promptText="Date" />
+            <JFXTextField fx:id="startTime" maxWidth="200.0" prefWidth="200.0" promptText="Start Time HH:MM AM/PM" />
+            <JFXComboBox fx:id="categoryBox" editable="true" prefHeight="25.0" prefWidth="200.0" promptText="Category" />
+            <JFXTextField fx:id="titleText" promptText="Title" />
+            <TextArea fx:id="descriptionText" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Description" VBox.vgrow="ALWAYS" />
             <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="200.0" VBox.vgrow="NEVER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Add" />
+                  <Button fx:id="addButton" mnemonicParsing="false" onAction="#addClick" prefHeight="25.0" prefWidth="125.0" text="Add" />
                </children>
             </HBox>
          </children>
