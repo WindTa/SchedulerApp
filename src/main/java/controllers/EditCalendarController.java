@@ -64,11 +64,15 @@ public class EditCalendarController {
         }
 
         Color calColor = Main.user.getCalendarColor();
+        Color calBorder = getContrastColor(Main.user.getCalendarColor());
         Color appColor = Main.user.getAppointmentColor();
+        Color appBorder = getContrastColor(Main.user.getCalendarColor());
 
         if (state.equals("After")) {
             calColor = calendarColor.getValue();
+            calBorder = getContrastColor(calendarColor.getValue());
             appColor = appointmentColor.getValue();
+            appBorder = getContrastColor(appointmentColor.getValue());
         }
 
         for (int i = 0; i < row; i++) {
@@ -77,11 +81,15 @@ public class EditCalendarController {
                 anchorPane.setPrefSize(50,50);
                 anchorPane.setPadding(new Insets(10));
                 if (i == (row - 1) && j == (column - 1)) {
-                    anchorPane.setStyle("-fx-background-color: #" + appColor.toString().substring(2, 8) + ";"
-                            + "-fx-border-color: black");
+                    anchorPane.setStyle(
+                            "-fx-background-color: #" + appColor.toString().substring(2, 8) + ";"
+                            + "-fx-border-color: #" + appBorder.toString().substring(2, 8)
+                    );
                 } else {
-                    anchorPane.setStyle("-fx-background-color: #" + calColor.toString().substring(2, 8) + ";"
-                            + "-fx-border-color: black");
+                    anchorPane.setStyle(
+                            "-fx-background-color: #" + calColor.toString().substring(2, 8) + ";"
+                            + "-fx-border-color: #" + calBorder.toString().substring(2, 8)
+                    );
                 }
                 gridPane.add(anchorPane, j, i);
                 gridPane.setHgrow(anchorPane, Priority.ALWAYS);
@@ -89,6 +97,11 @@ public class EditCalendarController {
             }
         }
         borderPane.setCenter(gridPane);
+    }
+
+    public static Color getContrastColor(Color color) {
+        double y = (299 * color.getRed() + 587 * color.getGreen() + 114 * color.getBlue());
+        return y >= 128 ? Color.color(0, 0, 0) : Color.color(1, 1, 1);
     }
 
     public void homeClick(ActionEvent actionEvent) throws IOException {

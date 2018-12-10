@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import main.java.Main;
@@ -39,7 +40,21 @@ public class WeekController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        hbox.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8));
+        Color background = Main.user.getCalendarColor();
+        Color font = getContrastColor(Main.user.getCalendarColor());
+        hbox.setStyle(
+                "-fx-background-color: #" + background.toString().substring(2, 8) + ";"
+                        + "-fx-border-color: #" + font.toString().substring(2, 8)
+        );
+
+        labelMonth.setStyle(
+                "-fx-text-fill: #" + font.toString().substring(2, 8) + ";"
+        );
+
+        labelYear.setStyle(
+                "-fx-text-fill: #" + font.toString().substring(2, 8) + ";"
+        );
+
         labelMonth.setText(String.valueOf(date.getMonth()));
         labelYear.setText(String.valueOf(date.getYear()));
 
@@ -62,6 +77,11 @@ public class WeekController implements Initializable {
 
     }
 
+    public static Color getContrastColor(Color color) {
+        double y = (299 * color.getRed() + 587 * color.getGreen() + 114 * color.getBlue());
+        return y >= 128 ? Color.color(0, 0, 0) : Color.color(1, 1, 1);
+    }
+
     /**Method that populate the date of moth in GridPane**/
     private void populateDate(YearMonth yearMonthNow){
         YearMonth yearMonth = yearMonthNow;
@@ -70,28 +90,6 @@ public class WeekController implements Initializable {
 
         // Populate the calendar with day numbers
         for (AnchorPaneNode anchorPane : dateList) {
-            try {
-                stmt = Main.con.createStatement();
-                ResultSet date = stmt.executeQuery(
-                        String.format(
-                                "SELECT DISTINCT appdate FROM appointment "
-                                        + "WHERE email = '%s' AND appdate = '%s'"
-                                , Main.user.getEmail(), calendarDate
-                        )
-                );
-
-                if (date.next()) {
-                    anchorPane.setStyle("-fx-background-color: #" + Main.user.getAppointmentColor().toString().substring(2, 8) + ";"
-                            + "-fx-border-color: black");
-                } else {
-                    anchorPane.setStyle("-fx-background-color: #" + Main.user.getCalendarColor().toString().substring(2, 8) + ";"
-                            + "-fx-border-color: black");
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
             if (anchorPane.getChildren().size() != 0) {
                 anchorPane.getChildren().clear(); //remove the label in AnchorPane
             }
@@ -125,6 +123,40 @@ public class WeekController implements Initializable {
             });
 
             calendarDate = calendarDate.plusDays(1);
+
+            try {
+                stmt = Main.con.createStatement();
+                ResultSet date = stmt.executeQuery(
+                        String.format(
+                                "SELECT DISTINCT appdate FROM appointment "
+                                        + "WHERE email = '%s' AND appdate = '%s'"
+                                , Main.user.getEmail(), calendarDate
+                        )
+                );
+
+                if (date.next()) {
+                    Color background = Main.user.getAppointmentColor();
+                    Color font = getContrastColor(Main.user.getAppointmentColor());
+                    anchorPane.setStyle("-fx-background-color: #" + background.toString().substring(2, 8) + ";"
+                            + "-fx-border-color: #" + font.toString().substring(2, 8)
+                    );
+                    label.setStyle(
+                            "-fx-text-fill: #" + font.toString().substring(2, 8) + ";"
+                    );
+                } else {
+                    Color background = Main.user.getCalendarColor();
+                    Color font = getContrastColor(Main.user.getCalendarColor());
+                    anchorPane.setStyle("-fx-background-color: #" + background.toString().substring(2, 8) + ";"
+                            + "-fx-border-color: #" + font.toString().substring(2, 8)
+                    );
+                    label.setStyle(
+                            "-fx-text-fill: #" + font.toString().substring(2, 8) + ";"
+                    );
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
