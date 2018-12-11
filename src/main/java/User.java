@@ -15,6 +15,7 @@ public class User {
     private static StringProperty email;
     private static StringProperty password;
     private static StringProperty name;
+    private static StringProperty phone;
     private static ObjectProperty<LocalDate> birthdate;
 
     private static StringProperty calendarMode;
@@ -27,10 +28,107 @@ public class User {
         email = new SimpleStringProperty(this, "email", user.getString("email"));
         password = new SimpleStringProperty(this, "password", user.getString("password"));
         name = new SimpleStringProperty(this, "name", user.getString("name"));
+        phone = new SimpleStringProperty(this, "phone", user.getString("phone"));
         birthdate = new SimpleObjectProperty<>(user.getDate("birthdate").toLocalDate());
         calendarMode = new SimpleStringProperty(this, "calendarmode", setting.getString("calendarmode"));
         calendarColor = new SimpleObjectProperty<>(Color.web(setting.getString("calendarcolor")));
         appointmentColor = new SimpleObjectProperty<>(Color.web(setting.getString("appointmentcolor")));
+    }
+
+    public static String getEmail() {
+        return email.get();
+    }
+
+    public void setEmail(String email) {
+        User.email.set(email);
+    }
+
+    public static StringProperty emailProperty() {
+        return email;
+    }
+
+    public static String getPassword() {
+        return password.get();
+    }
+
+    public void setPassword(String password) {
+        User.password.set(password);
+    }
+
+    public static StringProperty passwordProperty() {
+        return password;
+    }
+
+    public static String getName() {
+        return name.get();
+    }
+
+    public void setName(String name) {
+        User.name.set(name);
+    }
+
+    public static StringProperty nameProperty() {
+        return name;
+    }
+
+    public static String getPhone() {
+        return phone.get();
+    }
+
+    public void setPhone(String phone) {
+        User.phone.set(phone);
+    }
+
+    public static StringProperty phoneProperty() {
+        return phone;
+    }
+
+    public static LocalDate getBirthdate() {
+        return birthdate.get();
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        User.birthdate.set(birthdate);
+    }
+
+    public static ObjectProperty<LocalDate> birthdateProperty() {
+        return birthdate;
+    }
+
+    public static String getCalendarMode() {
+        return calendarMode.get();
+    }
+
+    public void setCalendarMode(String calendarMode) {
+        User.calendarMode.set(calendarMode);
+    }
+
+    public static StringProperty calendarModeProperty() {
+        return calendarMode;
+    }
+
+    public static Color getCalendarColor() {
+        return calendarColor.get();
+    }
+
+    public void setCalendarColor(Color calendarColor) {
+        User.calendarColor.set(calendarColor);
+    }
+
+    public static ObjectProperty<Color> calendarColorProperty() {
+        return calendarColor;
+    }
+
+    public static Color getAppointmentColor() {
+        return appointmentColor.get();
+    }
+
+    public void setAppointmentColor(Color appointmentColor) {
+        User.appointmentColor.set(appointmentColor);
+    }
+
+    public static ObjectProperty appointmentColorProperty() {
+        return appointmentColor;
     }
 
     public void update(String email) {
@@ -38,13 +136,13 @@ public class User {
             stmt = Main.con.createStatement();
             ResultSet user = stmt.executeQuery(
                     String.format("SELECT * FROM user "
-                                + "WHERE email = '%s'", email)
+                            + "WHERE email = '%s'", email)
             );
 
             stmt = Main.con.createStatement();
             ResultSet setting = stmt.executeQuery(
                     String.format("SELECT * FROM setting "
-                                + "WHERE email = '%s'", email)
+                            + "WHERE email = '%s'", email)
             );
 
             user.next();
@@ -53,6 +151,7 @@ public class User {
             setEmail(user.getString("email"));
             setPassword(user.getString("password"));
             setName(user.getString("name"));
+            setPhone(user.getString("phone"));
             setBirthdate(user.getDate("birthdate").toLocalDate());
             setCalendarMode(setting.getString("calendarmode"));
             setCalendarColor(Color.web(setting.getString("calendarcolor")));
@@ -60,90 +159,6 @@ public class User {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public static String getEmail() {
-        return email.get();
-    }
-
-    public static StringProperty emailProperty() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email.set(email);
-    }
-
-    public static String getPassword() {
-        return password.get();
-    }
-
-    public static StringProperty passwordProperty() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password.set(password);
-    }
-
-    public static String getName() {
-        return name.get();
-    }
-
-    public static StringProperty nameProperty() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name.set(name);
-    }
-
-    public static LocalDate getBirthdate() {
-        return birthdate.get();
-    }
-
-    public static ObjectProperty<LocalDate> birthdateProperty() {
-        return birthdate;
-    }
-
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate.set(birthdate);
-    }
-
-    public static String getCalendarMode() {
-        return calendarMode.get();
-    }
-
-    public static StringProperty calendarModeProperty() {
-        return calendarMode;
-    }
-
-    public void setCalendarMode(String calendarMode) {
-        this.calendarMode.set(calendarMode);
-    }
-
-    public static Color getCalendarColor() {
-        return calendarColor.get();
-    }
-
-    public static ObjectProperty<Color> calendarColorProperty() {
-        return calendarColor;
-    }
-
-    public void setCalendarColor(Color calendarColor) {
-        this.calendarColor.set(calendarColor);
-    }
-
-    public static Color getAppointmentColor() {
-        return appointmentColor.get();
-    }
-
-    public static ObjectProperty appointmentColorProperty() {
-        return appointmentColor;
-    }
-
-    public void setAppointmentColor(Color appointmentColor) {
-        this.appointmentColor.set(appointmentColor);
     }
 
 }

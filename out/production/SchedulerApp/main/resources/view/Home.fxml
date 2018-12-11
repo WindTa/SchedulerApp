@@ -33,7 +33,8 @@
             </Menu>
             <Menu mnemonicParsing="false" text="Settings">
                <items>
-                  <MenuItem fx:id="editCalendarButton" mnemonicParsing="false" onAction="#editCalendarClick" text="Change..." />
+                  <MenuItem fx:id="editCalendarButton" mnemonicParsing="false" onAction="#editCalendarClick" text="Color/Mode..." />
+                  <MenuItem fx:id="reminderButton" mnemonicParsing="false" onAction="#reminderClick" text="Reminder..." />
                </items>
             </Menu>
         </menus>

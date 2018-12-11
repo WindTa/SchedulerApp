@@ -1,9 +1,12 @@
 package main.java;
 
-import com.jfoenix.controls.*;
-import javafx.scene.control.*;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 
-import java.sql.Time;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -23,7 +26,7 @@ public class Validate {
         }
     }
 
-     public static boolean password(JFXPasswordField passwordText) {
+    public static boolean password(JFXPasswordField passwordText) {
         Pattern p = Pattern.compile("((?=.*\\d)(?=.*[a-zA-Z]).{8,16})");
         Matcher m = p.matcher(passwordText.getText());
         if (m.find() && m.group().equals(passwordText.getText())) {
@@ -70,6 +73,17 @@ public class Validate {
         }
     }
 
+    public static boolean phone(JFXTextField phoneText) {
+        Pattern p = Pattern.compile("\\d{11}");
+        Matcher m = p.matcher(phoneText.getText());
+        if (m.find() && m.group().equals(phoneText.getText())) {
+            return true;
+        } else {
+            alert(Alert.AlertType.WARNING, "Validate Phone", "Please enter valid phone");
+            return false;
+        }
+    }
+
     public static boolean searchDateValid(DatePicker date1, DatePicker date2) {
         if (date1.getValue().isBefore(date2.getValue())) {
             return true;
@@ -89,6 +103,17 @@ public class Validate {
 
     public static boolean time(JFXTextField time) {
         Pattern p = Pattern.compile("(1[0-2]|0?[1-9]):([0-5][0-9]) ([AaPp][Mm])");
+        Matcher m = p.matcher(time.getText());
+        if (m.find() && m.group().equals(time.getText())) {
+            return true;
+        } else {
+            alert(Alert.AlertType.WARNING, "Validate Time", "Please enter valid time");
+            return false;
+        }
+    }
+
+    public static boolean reminder(JFXTextField time) {
+        Pattern p = Pattern.compile("([01]?[0-9]|2[0-3]):[0-5][0-9]");
         Matcher m = p.matcher(time.getText());
         if (m.find() && m.group().equals(time.getText())) {
             return true;

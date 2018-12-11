@@ -1,7 +1,6 @@
 package main.java.controllers;
 
 import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +10,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import main.java.Main;
+import main.java.User;
 import main.java.Validate;
 
 import java.io.IOException;
@@ -24,11 +24,16 @@ import java.util.Locale;
 
 public class MakeAppController extends Validate {
 
-    @FXML DatePicker datePicker;
-    @FXML JFXTextField startTime;
-    @FXML JFXComboBox categoryBox;
-    @FXML JFXTextField titleText;
-    @FXML TextArea descriptionText;
+    @FXML
+    DatePicker datePicker;
+    @FXML
+    JFXTextField startTime;
+    @FXML
+    JFXComboBox categoryBox;
+    @FXML
+    JFXTextField titleText;
+    @FXML
+    TextArea descriptionText;
 
     private Statement stmt;
 
@@ -38,7 +43,7 @@ public class MakeAppController extends Validate {
             stmt = Main.con.createStatement();
             ResultSet categories = stmt.executeQuery(
                     String.format("SELECT category FROM appointment "
-                                + "WHERE email = '%s' GROUP BY category", Main.user.getEmail())
+                            + "WHERE email = '%s' GROUP BY category", User.getEmail())
             );
 
             while (categories.next()) {
@@ -65,7 +70,7 @@ public class MakeAppController extends Validate {
                 stmt.executeUpdate(
                         String.format("INSERT INTO appointment (email, appdate, apptime, category, event, description) VALUES"
                                         + "('%s', '%s', '%s', '%s', '%s', '%s')"
-                                , Main.user.getEmail(), datePicker.getValue(), LocalTime.parse(startTime.getText(), inputFormatter)
+                                , User.getEmail(), datePicker.getValue(), LocalTime.parse(startTime.getText(), inputFormatter)
                                 , categoryBox.getValue(), titleText.getText(), descriptionText.getText())
                 );
 

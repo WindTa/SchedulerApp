@@ -2,7 +2,6 @@ package main.java.controllers;
 
 import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,10 +10,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import main.java.Appointment;
 import main.java.Main;
+import main.java.User;
 import main.java.Validate;
 
 import java.io.IOException;
@@ -27,15 +26,23 @@ import java.util.Locale;
 
 public class CancelAppController extends Validate {
 
-    @FXML DatePicker searchStartDate;
-    @FXML DatePicker searchEndDate;
-    @FXML JFXTextField searchStartTime;
-    @FXML JFXTextField searchEndTime;
-    @FXML ComboBox searchBox;
-    @FXML JFXTextField searchText;
+    @FXML
+    DatePicker searchStartDate;
+    @FXML
+    DatePicker searchEndDate;
+    @FXML
+    JFXTextField searchStartTime;
+    @FXML
+    JFXTextField searchEndTime;
+    @FXML
+    ComboBox searchBox;
+    @FXML
+    JFXTextField searchText;
 
-    @FXML VBox vbox;
-    @FXML JFXListView<Appointment> searchResult;
+    @FXML
+    VBox vbox;
+    @FXML
+    JFXListView<Appointment> searchResult;
 
     private ObservableList<Appointment> list = FXCollections.observableArrayList();
     private Statement stmt;
@@ -47,7 +54,7 @@ public class CancelAppController extends Validate {
             stmt = Main.con.createStatement();
             ResultSet categories = stmt.executeQuery(
                     String.format("SELECT category FROM appointment "
-                            + "WHERE email = '%s' GROUP BY category", Main.user.getEmail())
+                            + "WHERE email = '%s' GROUP BY category", User.getEmail())
             );
 
             while (categories.next()) {
@@ -71,7 +78,7 @@ public class CancelAppController extends Validate {
         boolean editable = true;
         String query = String.format(
                 "SELECT * FROM appointment WHERE (email = '%s')",
-                Main.user.getEmail()
+                User.getEmail()
         );
 
         if (searchStartDate.getValue() != null && searchEndDate.getValue() != null) {
@@ -110,6 +117,8 @@ public class CancelAppController extends Validate {
                         " AND (apptime >= '%s')",
                         LocalTime.parse(searchStartTime.getText(), inputFormatter)
                 );
+            } else {
+                editable = false;
             }
         } else if (searchStartTime.getText().isEmpty() && !searchEndTime.getText().isEmpty()) {
             if (time(searchEndTime)) {
@@ -117,6 +126,8 @@ public class CancelAppController extends Validate {
                         " AND (apptime <= '%s')",
                         LocalTime.parse(searchEndTime.getText(), inputFormatter)
                 );
+            } else {
+                editable = false;
             }
         }
 
@@ -141,7 +152,7 @@ public class CancelAppController extends Validate {
                 System.out.println(query);
                 stmt = Main.con.createStatement();
                 ResultSet appointments = stmt.executeQuery(query);
-                while(appointments.next()) {
+                while (appointments.next()) {
 
                     list.add(new Appointment(
                             appointments.getDate("appdate"),
@@ -160,17 +171,17 @@ public class CancelAppController extends Validate {
     }
 
     public void cancelClick(ActionEvent actionEvent) {
-        for (Appointment a: searchResult.getSelectionModel().getSelectedItems()) {
+        for (Appointment a : searchResult.getSelectionModel().getSelectedItems()) {
             try {
                 stmt.executeUpdate(
                         String.format(
                                 "DELETE FROM appointment WHERE email = '%s'"
-                                + " AND appdate = '%s'"
-                                + " AND apptime = '%s'"
-                                + " AND category = '%s'"
-                                + " AND event = '%s'"
-                                + " AND description = '%s'",
-                                Main.user.getEmail(), a.getDate(), a.getTime(), a.getCategory(), a.getEvent(), a.getDescription()
+                                        + " AND appdate = '%s'"
+                                        + " AND apptime = '%s'"
+                                        + " AND category = '%s'"
+                                        + " AND event = '%s'"
+                                        + " AND description = '%s'",
+                                User.getEmail(), a.getDate(), a.getTime(), a.getCategory(), a.getEvent(), a.getDescription()
                         )
                 );
             } catch (SQLException e) {

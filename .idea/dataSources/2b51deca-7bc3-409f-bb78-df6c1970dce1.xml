@@ -964,74 +964,70 @@
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
     <table id="242" parent="3" name="appointment"/>
-    <table id="243" parent="3" name="setting"/>
-    <table id="244" parent="3" name="user"/>
-    <column id="245" parent="242" name="email">
+    <table id="243" parent="3" name="reminder"/>
+    <table id="244" parent="3" name="setting"/>
+    <table id="245" parent="3" name="user"/>
+    <column id="246" parent="242" name="email">
       <Position>1</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="242" name="appdate">
+    <column id="247" parent="242" name="appdate">
       <Position>2</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="242" name="apptime">
+    <column id="248" parent="242" name="apptime">
       <Position>3</Position>
       <DataType>time|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="248" parent="242" name="category">
+    <column id="249" parent="242" name="category">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="249" parent="242" name="event">
+    <column id="250" parent="242" name="event">
       <Position>5</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="242" name="description">
+    <column id="251" parent="242" name="description">
       <Position>6</Position>
       <DataType>text|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="251" parent="242" name="PRIMARY">
+    <key id="252" parent="242" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email
 appdate
 apptime</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="252" parent="242" name="appointment_user_fk">
+    <foreign-key id="253" parent="242" name="appointment_user_fk">
       <ColNames>email</ColNames>
       <RefSchemaName>jk</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>email</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="253" parent="243" name="email">
+    <column id="254" parent="243" name="email">
       <Position>1</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="254" parent="243" name="calendarmode">
+    <column id="255" parent="243" name="media">
       <Position>2</Position>
-      <DataType>varchar(5)|0s</DataType>
+      <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="255" parent="243" name="calendarcolor">
+    <column id="256" parent="243" name="schedule">
       <Position>3</Position>
-      <DataType>varchar(7)|0s</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="256" parent="243" name="appointmentcolor">
-      <Position>4</Position>
-      <DataType>varchar(7)|0s</DataType>
+      <DataType>time|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="257" parent="243" name="PRIMARY">
@@ -1039,7 +1035,7 @@ apptime</ColNames>
       <ColNames>email</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="258" parent="243" name="setting_user_fk">
+    <foreign-key id="258" parent="243" name="reminder_user_fk">
       <ColNames>email</ColNames>
       <RefSchemaName>jk</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -1052,22 +1048,60 @@ apptime</ColNames>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="260" parent="244" name="password">
+    <column id="260" parent="244" name="calendarmode">
+      <Position>2</Position>
+      <DataType>varchar(5)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="244" name="calendarcolor">
+      <Position>3</Position>
+      <DataType>varchar(7)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="262" parent="244" name="appointmentcolor">
+      <Position>4</Position>
+      <DataType>varchar(7)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="263" parent="244" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>email</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="264" parent="244" name="setting_user_fk">
+      <ColNames>email</ColNames>
+      <RefSchemaName>jk</RefSchemaName>
+      <RefTableName>user</RefTableName>
+      <RefColNames>email</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="265" parent="245" name="email">
+      <Position>1</Position>
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="266" parent="245" name="password">
       <Position>2</Position>
       <DataType>varchar(16)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="244" name="name">
+    <column id="267" parent="245" name="name">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="244" name="birthdate">
+    <column id="268" parent="245" name="phone">
       <Position>4</Position>
+      <DataType>varchar(11)|0s</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="269" parent="245" name="birthdate">
+      <Position>5</Position>
       <DataType>date|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="263" parent="244" name="PRIMARY">
+    <key id="270" parent="245" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>email</ColNames>
       <Primary>1</Primary>

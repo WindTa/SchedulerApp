@@ -3,11 +3,10 @@ package main.java.controllers;
 import com.jfoenix.controls.JFXRippler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,38 +15,54 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import main.java.Main;
+import main.java.User;
 
 import java.net.URL;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-
 import java.time.LocalTime;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
-import java.util.*;
+import java.time.temporal.TemporalAdjusters;
+import java.util.ArrayList;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class WeekController implements Initializable {
 
-    @FXML private Label labelMonth;
-    @FXML private Label labelYear;
-    @FXML private GridPane gridPane;
-    @FXML private HBox hbox;
+    @FXML
+    private Label labelMonth;
+    @FXML
+    private Label labelYear;
+    @FXML
+    private GridPane gridPane;
+    @FXML
+    private HBox hbox;
 
     private ArrayList<AnchorPaneNode> dateList = new ArrayList<>();
     private LocalDate date = LocalDate.now();
     private Statement stmt;
 
+    public static Color getContrastColor(Color color) {
+        double y = (299 * color.getRed() + 587 * color.getGreen() + 114 * color.getBlue());
+        return y >= 128 ? Color.color(0, 0, 0) : Color.color(1, 1, 1);
+    }
+
+    public static String convertTime(String time) {
+        DateTimeFormatter fmt_24 = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter fmt_12 = DateTimeFormatter.ofPattern("hh:mm a");
+        LocalTime t = LocalTime.parse(time, fmt_24);
+        return fmt_12.format(t);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Color background = Main.user.getCalendarColor();
-        Color font = getContrastColor(Main.user.getCalendarColor());
+        Color background = User.getCalendarColor();
+        Color font = getContrastColor(User.getCalendarColor());
         hbox.setStyle(
                 "-fx-background-color: #" + background.toString().substring(2, 8) + ";"
                         + "-fx-border-color: #" + font.toString().substring(2, 8)
@@ -69,7 +84,7 @@ public class WeekController implements Initializable {
             for (int j = 0; j < 7; j++) { //Column has 7, for 7 days a week
                 //Layout of AnchorPane
                 AnchorPaneNode anchorPane = new AnchorPaneNode();
-                anchorPane.setPrefSize(200,200);
+                anchorPane.setPrefSize(200, 200);
                 anchorPane.setPadding(new Insets(10));
                 JFXRippler rippler = new JFXRippler(anchorPane);
                 rippler.setRipplerFill(Paint.valueOf("#CCCCCC"));
@@ -83,23 +98,14 @@ public class WeekController implements Initializable {
 
     }
 
-    public static Color getContrastColor(Color color) {
-        double y = (299 * color.getRed() + 587 * color.getGreen() + 114 * color.getBlue());
-        return y >= 128 ? Color.color(0, 0, 0) : Color.color(1, 1, 1);
-    }
-
-    public static String convertTime(String time) {
-        DateTimeFormatter fmt_24 = DateTimeFormatter.ofPattern("HH:mm:ss");
-        DateTimeFormatter fmt_12 = DateTimeFormatter.ofPattern("hh:mm a");
-        LocalTime t = LocalTime.parse(time, fmt_24);
-        return fmt_12.format(t);
-    }
-
-    /**Method that populate the date of moth in GridPane**/
-    private void populateDate(YearMonth yearMonthNow){
+    /**
+     * Method that populate the date of moth in GridPane
+     **/
+    private void populateDate(YearMonth yearMonthNow) {
         YearMonth yearMonth = yearMonthNow;
         // Get the date we want to start with on the calendar
-        LocalDate calendarDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), date.getDayOfMonth() - 1);
+        LocalDate calendarDate = LocalDate.of(yearMonth.getYear(), yearMonth.getMonthValue(), date.getDayOfMonth());
+        calendarDate = calendarDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.SUNDAY));
 
         // Populate the calendar with day numbers
         for (AnchorPaneNode anchorPane : dateList) {
@@ -114,26 +120,26 @@ public class WeekController implements Initializable {
 
             Label label = new Label();
             label.setText(String.valueOf(calendarDate.getDayOfMonth()));
-            label.setFont(Font.font("Roboto",16)); //set the font of Text
+            label.setFont(Font.font("Roboto", 16)); //set the font of Text
             label.getStyleClass().add("notInRangeDays");
-            if(isDateInRange(yearMonth, anchorPane.getDate())){
+            if (isDateInRange(yearMonth, anchorPane.getDate())) {
                 label.getStyleClass().remove("notInRangeDays");
             }
-            if (anchorPane.getDate().equals(LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), yearMonth.lengthOfMonth()))){
+            if (anchorPane.getDate().equals(LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), yearMonth.lengthOfMonth()))) {
                 label.getStyleClass().remove("notInRangeDays");
             }
 
-            anchorPane.setTopAnchor(label, 5.0);
-            anchorPane.setLeftAnchor(label, 5.0);
+            AnchorPane.setTopAnchor(label, 5.0);
+            AnchorPane.setLeftAnchor(label, 5.0);
             anchorPane.getChildren().add(vbox);
             vbox.getChildren().add(label);
             anchorPane.getStyleClass().remove("selectedDate"); //remove selection on date change
             anchorPane.getStyleClass().remove("dateNow"); //remove selection on current date
-            if(anchorPane.getDate().equals(LocalDate.now())){ //if date is equal to current date now, then add a defualt color to pane
+            if (anchorPane.getDate().equals(LocalDate.now())) { //if date is equal to current date now, then add a defualt color to pane
                 anchorPane.getStyleClass().add("dateNow");
             }
             anchorPane.setOnMouseClicked(event -> { //Handle click event of AnchorPane
-                for(AnchorPaneNode anchorPaneNode : dateList){
+                for (AnchorPaneNode anchorPaneNode : dateList) {
                     anchorPaneNode.getStyleClass().remove("selectedDate");
                 }
                 anchorPane.getStyleClass().add("selectedDate");
@@ -145,13 +151,13 @@ public class WeekController implements Initializable {
                         String.format(
                                 "SELECT DISTINCT appdate FROM appointment "
                                         + "WHERE email = '%s' AND appdate = '%s'"
-                                , Main.user.getEmail(), calendarDate
+                                , User.getEmail(), calendarDate
                         )
                 );
 
                 if (date.next()) {
-                    Color background = Main.user.getAppointmentColor();
-                    Color font = getContrastColor(Main.user.getAppointmentColor());
+                    Color background = User.getAppointmentColor();
+                    Color font = getContrastColor(User.getAppointmentColor());
                     anchorPane.setStyle("-fx-background-color: #" + background.toString().substring(2, 8) + ";"
                             + "-fx-border-color: #" + font.toString().substring(2, 8)
                     );
@@ -159,8 +165,8 @@ public class WeekController implements Initializable {
                             "-fx-text-fill: #" + font.toString().substring(2, 8) + ";"
                     );
                 } else {
-                    Color background = Main.user.getCalendarColor();
-                    Color font = getContrastColor(Main.user.getCalendarColor());
+                    Color background = User.getCalendarColor();
+                    Color font = getContrastColor(User.getCalendarColor());
                     anchorPane.setStyle("-fx-background-color: #" + background.toString().substring(2, 8) + ";"
                             + "-fx-border-color: #" + font.toString().substring(2, 8)
                     );
@@ -179,40 +185,45 @@ public class WeekController implements Initializable {
                         String.format(
                                 "SELECT apptime, category, event FROM appointment "
                                         + "WHERE email = '%s' AND appdate = '%s'"
-                                , Main.user.getEmail(), calendarDate
+                                , User.getEmail(), calendarDate
                         )
                 );
 
-                while(appointments.next()) {
+                while (appointments.next()) {
                     Text appointment = new Text(
                             String.format("%s \n"
-                                        + "\tCategory:\t %s \n"
-                                        + "\tEvent:\t %s"
-                                        , convertTime(appointments.getString("apptime"))
-                                        , appointments.getString("category")
-                                        , appointments.getString("event")
+                                            + "\tCategory:\t %s \n"
+                                            + "\tEvent:\t %s"
+                                    , convertTime(appointments.getString("apptime"))
+                                    , appointments.getString("category")
+                                    , appointments.getString("event")
                             )
                     );
-                    Color font = getContrastColor(Main.user.getAppointmentColor());
+                    Color font = getContrastColor(User.getAppointmentColor());
                     appointment.setFill(font);
                     vbox.getChildren().add(appointment);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            calendarDate = calendarDate.plusDays(1);
         }
     }
 
-    /**Method that return TRUE/FALSE if the specified date is in range of the current month**/
-    private boolean isDateInRange(YearMonth yearMonth, LocalDate currentDate){
+    /**
+     * Method that return TRUE/FALSE if the specified date is in range of the current month
+     **/
+    private boolean isDateInRange(YearMonth yearMonth, LocalDate currentDate) {
         LocalDate start = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), date.getDayOfMonth());
         LocalDate stop = LocalDate.of(yearMonth.getYear(), yearMonth.getMonth(), yearMonth.lengthOfMonth());
 
-        return ( ! currentDate.isBefore( start ) ) && ( currentDate.isBefore( stop ) ) ;
+        return (!currentDate.isBefore(start)) && (currentDate.isBefore(stop));
     }
 
-    /**Method that call the method populateDate(year, month) to change the calendar according to selected month and year**/
-    private void changeCalendar(int year, String month){
+    /**
+     * Method that call the method populateDate(year, month) to change the calendar according to selected month and year
+     **/
+    private void changeCalendar(int year, String month) {
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                 .parseCaseInsensitive()
                 .appendPattern("yyyy MMMM")
@@ -236,7 +247,7 @@ public class WeekController implements Initializable {
     }
 
     @FXML
-    private void nextClick(ActionEvent event){
+    private void nextClick(ActionEvent event) {
         if (date.getMonth() != date.plusWeeks(1).getMonth()) {
             date.plusMonths(1);
             if (date.getMonth().getValue() == 1) {

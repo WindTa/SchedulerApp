@@ -1,16 +1,13 @@
 package main.java.controllers;
 
-import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.text.Text;
+import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import main.java.Main;
 import main.java.User;
 import main.java.Validate;
@@ -21,22 +18,35 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 
 public class EditInfoController extends Validate {
-    @FXML private JFXTextField oldEmailText;
-    @FXML private JFXPasswordField oldPasswordText;
-    @FXML private JFXTextField oldNameText;
-    @FXML private DatePicker oldBirthDate;
+    @FXML
+    private JFXTextField oldEmailText;
+    @FXML
+    private JFXPasswordField oldPasswordText;
+    @FXML
+    private JFXTextField oldNameText;
+    @FXML
+    private DatePicker oldBirthDate;
+    @FXML
+    private JFXTextField oldPhoneText;
 
-    @FXML private JFXTextField newEmailText;
-    @FXML private JFXPasswordField newPasswordText;
-    @FXML private JFXTextField newNameText;
-    @FXML private DatePicker newBirthDate;
+    @FXML
+    private JFXTextField newEmailText;
+    @FXML
+    private JFXPasswordField newPasswordText;
+    @FXML
+    private JFXTextField newNameText;
+    @FXML
+    private JFXTextField newPhoneText;
+    @FXML
+    private DatePicker newBirthDate;
     private Statement stmt;
 
     @FXML
     public void initialize() {
-        oldEmailText.textProperty().bind(Main.user.emailProperty());
-        oldNameText.textProperty().bind(Main.user.nameProperty());
-        oldBirthDate.valueProperty().bind(Main.user.birthdateProperty());
+        oldEmailText.textProperty().bind(User.emailProperty());
+        oldNameText.textProperty().bind(User.nameProperty());
+        oldPhoneText.textProperty().bind(User.phoneProperty());
+        oldBirthDate.valueProperty().bind(User.birthdateProperty());
     }
 
     public void homeClick(ActionEvent event) throws IOException {
@@ -51,6 +61,8 @@ public class EditInfoController extends Validate {
         if (!newEmailText.getText().isEmpty()) {
             if (email(newEmailText)) {
                 query += String.format("email = '%s',", newEmailText.getText());
+            } else {
+                editable = false;
             }
         }
 
@@ -64,6 +76,14 @@ public class EditInfoController extends Validate {
 
         if (!newNameText.getText().isEmpty()) {
             query += String.format("name = '%s',", newNameText.getText());
+        }
+
+        if (!newPhoneText.getText().isEmpty()) {
+            if (phone(newPhoneText)) {
+                query += String.format("phone = '%s',", newPhoneText.getText());
+            } else {
+                editable = false;
+            }
         }
 
         if (newBirthDate.getValue() != null) {
@@ -83,8 +103,6 @@ public class EditInfoController extends Validate {
                     Main.user.update(newEmailText.getText());
                 }
 
-                Parent root = FXMLLoader.load(getClass().getResource("/main/resources/view/Home.fxml"));
-                Main.update(root);
             } catch (SQLIntegrityConstraintViolationException e) {
                 alert(Alert.AlertType.WARNING, "User Exists", "This email already has an account");
             } catch (SQLException e) {
@@ -99,6 +117,7 @@ public class EditInfoController extends Validate {
         oldPasswordText.clear();
         newPasswordText.clear();
         newNameText.clear();
+        newPhoneText.clear();
         newBirthDate.setValue(null);
     }
 }

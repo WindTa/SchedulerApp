@@ -1,14 +1,11 @@
 package main.java;
 
 import javafx.application.Application;
-import javafx.beans.property.Property;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.Connection;
 
 public class Main extends Application {
@@ -20,6 +17,20 @@ public class Main extends Application {
     public static void main(String[] args) {
         con = ConnectionManager.getConnection();
         launch(args);
+    }
+
+    public static void closeProgram() {
+        try {
+            con.close();
+        } catch (Exception e) {
+            System.out.println("Couldn't close connection");
+        }
+        window.close();
+    }
+
+    public static void update(Parent root) {
+        window.getScene().setRoot(root);
+        window.show();
     }
 
     @Override
@@ -37,20 +48,6 @@ public class Main extends Application {
         Scene scene = new Scene(root, 1280, 720);
 
         window.setScene(scene);
-        window.show();
-    }
-
-    public static void closeProgram() {
-        try {
-            con.close();
-        } catch (Exception e) {
-            System.out.println("Couldn't close connection");
-        }
-        window.close();
-    }
-
-    public static void update(Parent root){
-        window.getScene().setRoot(root);
         window.show();
     }
 }

@@ -5,13 +5,8 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import main.java.Main;
 import main.java.User;
 import main.java.Validate;
@@ -20,11 +15,12 @@ import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
-public class SignInController  extends Validate{
-    @FXML private JFXTextField emailText;
-    @FXML private JFXPasswordField passwordText;
+public class SignInController extends Validate {
+    @FXML
+    private JFXTextField emailText;
+    @FXML
+    private JFXPasswordField passwordText;
     private Statement stmt;
 
     public void signUpClick(ActionEvent event) throws IOException {
@@ -38,13 +34,13 @@ public class SignInController  extends Validate{
                 stmt = Main.con.createStatement();
                 ResultSet user = stmt.executeQuery(
                         String.format("SELECT * FROM user "
-                                    + "WHERE email = '%s' AND BINARY password = '%s'", emailText.getText(), passwordText.getText())
+                                + "WHERE email = '%s' AND BINARY password = '%s'", emailText.getText(), passwordText.getText())
                 );
 
                 stmt = Main.con.createStatement();
                 ResultSet setting = stmt.executeQuery(
                         String.format("SELECT * FROM setting "
-                                    + "WHERE email = '%s'", emailText.getText())
+                                + "WHERE email = '%s'", emailText.getText())
                 );
 
                 if (user.next()) {

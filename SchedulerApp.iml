@@ -15,5 +15,8 @@
     <orderEntry type="library" name="commons-io-2.6" level="project" />
     <orderEntry type="library" name="commons-lang3-3.8.1" level="project" />
     <orderEntry type="library" name="commons-collections4-4.2" level="project" />
+    <orderEntry type="library" name="twilio-7.32.0-jar-with-dependencies" level="project" />
+    <orderEntry type="library" name="activation" level="project" />
+    <orderEntry type="library" name="javax.mail" level="project" />
   </component>
 </module>

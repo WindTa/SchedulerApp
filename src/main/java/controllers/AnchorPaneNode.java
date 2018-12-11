@@ -15,6 +15,7 @@ public class AnchorPaneNode extends AnchorPane {
 
     /**
      * Create a anchor pane node. Date is not assigned in the constructor.
+     *
      * @param children children of the anchor pane
      */
     public AnchorPaneNode(Node... children) {

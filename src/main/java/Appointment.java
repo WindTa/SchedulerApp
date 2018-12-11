@@ -25,6 +25,13 @@ public class Appointment {
         this.description = description;
     }
 
+    public static String convertTime(String time) {
+        DateTimeFormatter fmt_24 = DateTimeFormatter.ofPattern("HH:mm:ss");
+        DateTimeFormatter fmt_12 = DateTimeFormatter.ofPattern("hh:mm a");
+        LocalTime t = LocalTime.parse(time, fmt_24);
+        return fmt_12.format(t);
+    }
+
     public Date getDate() {
         return appdate;
     }
@@ -43,13 +50,6 @@ public class Appointment {
 
     public String getDescription() {
         return description;
-    }
-
-    public static String convertTime(String time) {
-        DateTimeFormatter fmt_24 = DateTimeFormatter.ofPattern("HH:mm:ss");
-        DateTimeFormatter fmt_12 = DateTimeFormatter.ofPattern("hh:mm a");
-        LocalTime t = LocalTime.parse(time, fmt_24);
-        return fmt_12.format(t);
     }
 
     @Override
