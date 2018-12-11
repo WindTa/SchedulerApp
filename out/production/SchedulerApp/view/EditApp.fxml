@@ -41,7 +41,7 @@
                         <JFXComboBox fx:id="searchBox" editable="true" maxWidth="1.7976931348623157E308" promptText="Category" />
                         <JFXTextField fx:id="searchText" opacity="0.37" promptText="Keywords" />
                         <Button fx:id="searchButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#searchClick" prefHeight="25.0" prefWidth="175.0" text="Search" />
-                        <JFXListView fx:id="searchResult" maxWidth="1.7976931348623157E308" prefHeight="51.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <JFXListView fx:id="searchResult" maxWidth="1.7976931348623157E308" onMouseClicked="#mouseClick" prefHeight="51.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                   <Separator orientation="VERTICAL" prefHeight="200.0" />
@@ -54,7 +54,7 @@
                         <TextArea fx:id="newDescription" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="New Description" VBox.vgrow="ALWAYS" />
                         <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="200.0" VBox.vgrow="NEVER">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="125.0" text="Apply" />
+                              <Button fx:id="applyButton" mnemonicParsing="false" onAction="#applyClick" prefHeight="25.0" prefWidth="125.0" text="Apply" />
                            </children>
                         </HBox>
                      </children>

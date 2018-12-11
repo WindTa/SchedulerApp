@@ -64,7 +64,7 @@ public class MakeAppController extends Validate {
 
                 stmt.executeUpdate(
                         String.format("INSERT INTO appointment (email, appdate, apptime, category, event, description) VALUES"
-                                + "('%s', '%s', '%s', '%s', '%s', '%s')"
+                                        + "('%s', '%s', '%s', '%s', '%s', '%s')"
                                 , Main.user.getEmail(), datePicker.getValue(), LocalTime.parse(startTime.getText(), inputFormatter)
                                 , categoryBox.getValue(), titleText.getText(), descriptionText.getText())
                 );

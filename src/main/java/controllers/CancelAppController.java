@@ -43,6 +43,7 @@ public class CancelAppController extends Validate {
     @FXML
     public void initialize() {
         try {
+            searchBox.getItems().clear();
             stmt = Main.con.createStatement();
             ResultSet categories = stmt.executeQuery(
                     String.format("SELECT category FROM appointment "
@@ -150,7 +151,6 @@ public class CancelAppController extends Validate {
                     ));
                 }
                 searchResult.setItems(list);
-                vbox.setDisable(false);
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -163,7 +163,7 @@ public class CancelAppController extends Validate {
             try {
                 stmt.executeUpdate(
                         String.format(
-                                "DELETE FROM appointment WHERE email = '%s' "
+                                "DELETE FROM appointment WHERE email = '%s'"
                                 + " AND appdate = '%s'"
                                 + " AND apptime = '%s'"
                                 + " AND category = '%s'"
@@ -177,5 +177,6 @@ public class CancelAppController extends Validate {
             }
         }
         searchClick(actionEvent);
+        initialize();
     }
 }
