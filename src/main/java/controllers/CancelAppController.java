@@ -65,6 +65,7 @@ public class CancelAppController extends Validate {
     }
 
     public void searchClick(ActionEvent actionEvent) {
+        vbox.setDisable(false);
         DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("h:mm a", Locale.ENGLISH);
 
         boolean editable = true;

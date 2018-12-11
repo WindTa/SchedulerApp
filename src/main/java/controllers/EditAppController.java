@@ -182,6 +182,7 @@ public class EditAppController extends Validate {
         } else {
             vbox.setDisable(true);
         }
+
     }
 
     public void applyClick(ActionEvent actionEvent) throws IOException {

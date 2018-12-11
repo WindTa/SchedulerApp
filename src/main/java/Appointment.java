@@ -6,10 +6,15 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class Appointment {
+
     private Date appdate;
+
     private Time apptime;
+
     private String category;
+
     private String event;
+
     private String description;
 
     public Appointment(Date appdate, Time apptime, String category, String event, String description) {

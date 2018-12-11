@@ -139,9 +139,7 @@ public class MonthController implements Initializable {
                 }
                 anchorPane.getStyleClass().add("selectedDate");
             });
-
-            calendarDate = calendarDate.plusDays(1);
-
+            
             try {
                 stmt = Main.con.createStatement();
                 ResultSet date = stmt.executeQuery(
