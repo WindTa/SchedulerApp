@@ -10,7 +10,7 @@ import java.util.Properties;
 public class SendEmail {
 
     private String user = "JnKProInc@gmail.com";
-    private String pass = "t598svp1536";
+    private String pass = "";
 
     public SendEmail(String to, String sub, String msg) {
         Properties prop = new Properties();
