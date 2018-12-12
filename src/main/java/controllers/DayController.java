@@ -49,8 +49,31 @@ public class DayController implements Initializable {
     private Statement stmt;
 
     public static Color getContrastColor(Color color) {
-        double y = (299 * color.getRed() + 587 * color.getGreen() + 114 * color.getBlue());
-        return y >= 128 ? Color.color(0, 0, 0) : Color.color(1, 1, 1);
+        double r = color.getRed();
+        double g = color.getGreen();
+        double b = color.getBlue();
+
+        if (r <= 0.03928) {
+            r = r / 12.92;
+        } else {
+            r = Math.pow((r + 0.055)/1.055, 2.4) ;
+        }
+
+        if (g <= 0.03928) {
+            g = g / 12.92;
+        } else {
+            r = Math.pow((g + 0.055)/1.055, 2.4);
+        }
+
+        if (b <= 0.03928) {
+            b = b / 12.92;
+        } else {
+            b = Math.pow((g + 0.055)/1.055, 2.4);
+        }
+
+        double L = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+        return L >= 0.1791 ? Color.color(0, 0, 0) : Color.color(1, 1, 1);
     }
 
     public static String convertTime(String time) {

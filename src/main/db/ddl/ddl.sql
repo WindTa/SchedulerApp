@@ -4,6 +4,7 @@ create table user
     primary key,
   password  varchar(16) null,
   name      varchar(50) null,
+  phone     varchar(11) null,
   birthdate date        null
 );
 
@@ -21,6 +22,17 @@ create table appointment
       on update cascade
 );
 
+create table reminder
+(
+  email    varchar(50) not null
+    primary key,
+  media    varchar(50) null,
+  schedule time        null,
+  constraint reminder_user_fk
+    foreign key (email) references user (email)
+      on update cascade
+);
+
 create table setting
 (
   email            varchar(50) not null
@@ -32,4 +44,3 @@ create table setting
     foreign key (email) references user (email)
       on update cascade
 );
-
